@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_05_074848) do
+ActiveRecord::Schema.define(version: 2020_06_05_081320) do
+
+  create_table "businesses", force: :cascade do |t|
+    t.string "name"
+    t.string "phone"
+    t.string "website"
+    t.string "instagram"
+    t.integer "neighborhood_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["neighborhood_id"], name: "index_businesses_on_neighborhood_id"
+  end
 
   create_table "cities", force: :cascade do |t|
     t.string "name"
@@ -27,5 +38,6 @@ ActiveRecord::Schema.define(version: 2020_06_05_074848) do
     t.index ["city_id"], name: "index_neighborhoods_on_city_id"
   end
 
+  add_foreign_key "businesses", "neighborhoods"
   add_foreign_key "neighborhoods", "cities"
 end
