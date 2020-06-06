@@ -4,6 +4,16 @@ class Api::V1::BusinessesController < ApplicationController
     render json: businesses
   end
 
+  def show
+    business = Business.find_by(id: params[:id])
+
+    if business
+      render json: business, status: :accepted 
+    else
+      render json: {errors: business.errors.full_messages}, status: :not_found
+    end
+  end
+
   def create
     business = Business.new(business_params)
 
