@@ -14,6 +14,19 @@
       </ul>
     </div>
 
+    <div id="newForm">
+      <h1>Don't see your favorite black-owned restaurant listed?</h1>
+      <p>Complete the form below. If info is unavailable for a specific field, enter "N/A" in the text box.</p>
+
+      <form action="http://localhost:3000/api/v1/businesses" method="POST">
+        <label> Business Name: <input type="text" name="name" id="name" required /></label><br />
+        <label> Phone: <input type="text" name="phone" id="phone" required /></label><br />
+        <label> Website or Yelp: <input type="text" name="website" id="website" required /></label><br />
+        <label> Instagram: <input type="text" name="ig" id="ig" required /></label><br />
+        <input type="submit" name="submit" id="submit" value="Submit" />
+      </form>
+    </div>
+
     <script defer src="./src/js/index.js"></script>
   </body>
 </html>
