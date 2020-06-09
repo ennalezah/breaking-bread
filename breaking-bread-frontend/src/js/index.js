@@ -8,11 +8,7 @@ function fetchBusinesses() {
   fetch(url)
     .then(resp => resp.json())
     .then(json => {
-      json.forEach(business => {
-        renderBusiness(business)
-      });
-      // console.log(json)
-      // debugger
+      json.forEach(business => renderBusiness(business))
     })   
 }
 
@@ -21,11 +17,13 @@ function renderBusiness(business) {
 
   const li = document.createElement("li");
   li.dataset.id = business.id;
-  li.innerText = business.name;
+  li.innerHTML = `<a href="${business.website}" target="_blank">${business.name}</a>`;
+
+  const info = document.createElement("p");
+  info.innerHTML = `${business.phone}<br>${business.instagram}`
+  li.appendChild(info);
 
   ul.appendChild(li);
-
-
 }
 
 
