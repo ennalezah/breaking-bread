@@ -26,6 +26,32 @@ function renderBusiness(business) {
   ul.appendChild(li);
 }
 
+function submitFormData(name, neighborhood, phone, website, instagram) {
+  let formData = {
+    name: name,
+    neighborhood: neighborhood,
+    phone: phone,    
+    website: website,
+    instagram: instagram
+  };
+
+  let confgObj = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify(formData)
+  };
+
+  fetch(url, configObj)
+    .then(resp => resp.json())
+    .then(json => {
+      console.log(json)
+      debugger
+    })
+}
+
 
 
 
