@@ -1,7 +1,11 @@
 const url = "http://localhost:3000/api/v1/businesses"
 
 function onLoad() {
+  const newForm = document.getElementById("new-business-form");
+
   fetchBusinesses();
+
+  newForm.addEventListener("submit", newFormHandler(e));
 }
 
 function fetchBusinesses() {
@@ -13,7 +17,7 @@ function fetchBusinesses() {
 }
 
 function renderBusiness(business) {  
-  const ul = document.getElementById("businessList")
+  const ul = document.getElementById("business-list")
 
   const li = document.createElement("li");
   li.dataset.id = business.id;
@@ -26,16 +30,16 @@ function renderBusiness(business) {
   ul.appendChild(li);
 }
 
-function submitFormData(name, neighborhood, phone, website, instagram) {
+function submitFormData(name, phone, website, instagram, neighborhood) {
   let formData = {
     name: name,
-    neighborhood: neighborhood,
     phone: phone,    
     website: website,
-    instagram: instagram
+    instagram: instagram,
+    neighborhood: neighborhood,
   };
 
-  let confgObj = {
+  let configObj = {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -48,14 +52,21 @@ function submitFormData(name, neighborhood, phone, website, instagram) {
     .then(resp => resp.json())
     .then(json => {
       console.log(json)
-      debugger
+      // debugger
     })
 }
 
+function newFormHandler(e) {
+  e.preventDefault();
 
+  const name = document.getElementById("new-name").value;
+  const phone = document.getElementById("new-phone").value;
+  const website = document.getElementById("new-website").value;
+  const instagram = document.getElementById("new-ig").value;
+  const neighborhood = document.getElementById("new-neighborhood").value;
 
-
-
+  submitFormData(name, phone, website, instagram, neighborhood);
+}
 
 
 
