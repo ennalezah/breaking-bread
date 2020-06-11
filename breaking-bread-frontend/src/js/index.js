@@ -45,7 +45,8 @@ function submitFormData(name, phone, website, instagram, neighborhood_id) {
   fetch(url, configObj)
     .then(resp => resp.json())
     .then(json => {
-      console.log(json)
+      // console.log(json)
+      renderBusiness(json);
       // debugger
     })
 }
