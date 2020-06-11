@@ -5,7 +5,7 @@ function onLoad() {
 
   fetchBusinesses();
 
-  newForm.addEventListener("submit", newFormHandler(e));
+  newForm.addEventListener("submit", newFormHandler);
 }
 
 function fetchBusinesses() {
@@ -30,14 +30,8 @@ function renderBusiness(business) {
   ul.appendChild(li);
 }
 
-function submitFormData(name, phone, website, instagram, neighborhood) {
-  let formData = {
-    name: name,
-    phone: phone,    
-    website: website,
-    instagram: instagram,
-    neighborhood: neighborhood,
-  };
+function submitFormData(name, phone, website, instagram, neighborhood_id) {
+  let formData = {name, phone, website, instagram, neighborhood_id};
 
   let configObj = {
     method: "POST",
@@ -63,9 +57,9 @@ function newFormHandler(e) {
   const phone = document.getElementById("new-phone").value;
   const website = document.getElementById("new-website").value;
   const instagram = document.getElementById("new-ig").value;
-  const neighborhood = document.getElementById("new-neighborhood").value;
+  const neighborhoodId = parseInt(document.getElementById("new-neighborhoods").value);
 
-  submitFormData(name, phone, website, instagram, neighborhood);
+  submitFormData(name, phone, website, instagram, neighborhoodId);
 }
 
 
