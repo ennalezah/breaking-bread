@@ -82,13 +82,25 @@ function fetchCities() {
 }
 
 function renderCity(city) {
-  const cityContainer = document.getElementById("city");
-  
-  const headerName = document.createElement("h1");
-  headerName.innerText = city.name;
+  // debugger
+  const cityName = document.getElementById("city-name");
 
-  cityContainer.appendChild(headerName);
-  // debugger 
+  const neighborhoods = document.getElementById("neighborhoods");
+
+  cityName.innerText = city.name;
+
+  for (const neighborhood of city.neighborhoods) {
+    const neighborhoodName = document.createElement("h3");
+
+    neighborhoodName.innerText = neighborhood.name;
+
+    neighborhoods.append(neighborhoodName);
+  }
+
+  
+
+  // cityHeader.appendChild(cityName);
+   
 }
 
 
