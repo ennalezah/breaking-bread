@@ -4,6 +4,7 @@ const citiesUrl = "http://localhost:3000/api/v1/cities/"
 
 function onLoad() {
   const newForm = document.getElementById("new-business-form");
+  
 
   fetchBusinesses();
   fetchCities();
@@ -18,7 +19,7 @@ function fetchBusinesses() {
   fetch(businessesUrl)
     .then(resp => resp.json())
     .then(json => {
-      json.forEach(business => renderBusiness(business))
+      return json.forEach(obj => renderBusiness(obj))
     })   
 }
 
@@ -76,11 +77,19 @@ function fetchCities() {
   fetch(citiesUrl)
     .then(resp => resp.json())
     .then(json => {
-      console.log(json)
-      debugger
+      return json.forEach(obj => renderCity(obj))
     })
 }
 
+function renderCity(city) {
+  const cityContainer = document.getElementById("city");
+  
+  const headerName = document.createElement("h1");
+  headerName.innerText = city.name;
+
+  cityContainer.appendChild(headerName);
+  // debugger 
+}
 
 
 
