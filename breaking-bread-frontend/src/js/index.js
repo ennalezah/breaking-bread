@@ -1,15 +1,21 @@
-const url = "http://localhost:3000/api/v1/businesses"
+const businessesUrl = "http://localhost:3000/api/v1/businesses"
+
+const citiesUrl = "http://localhost:3000/api/v1/cities/"
 
 function onLoad() {
   const newForm = document.getElementById("new-business-form");
 
   fetchBusinesses();
+  fetchCities();
 
   newForm.addEventListener("submit", newFormHandler);
 }
 
+
+/* BUSINESS */
+
 function fetchBusinesses() {
-  fetch(url)
+  fetch(businessesUrl)
     .then(resp => resp.json())
     .then(json => {
       json.forEach(business => renderBusiness(business))
@@ -62,6 +68,21 @@ function newFormHandler(e) {
 
   submitFormData(name, phone, website, instagram, neighborhoodId);
 }
+
+
+/* CITY */
+
+function fetchCities() {
+  fetch(citiesUrl)
+    .then(resp => resp.json())
+    .then(json => {
+      console.log(json)
+      debugger
+    })
+}
+
+
+
 
 
 
