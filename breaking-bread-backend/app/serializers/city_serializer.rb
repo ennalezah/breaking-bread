@@ -7,7 +7,9 @@ class CitySerializer
   def to_serialized_json    
     options = {
       include: { 
-        neighborhoods: { only: [:name] } 
+        neighborhoods: { only: [:id, :name], include: {
+            businesses: { only: [:id, :name] }
+        } } 
       },
       except: [:created_at, :updated_at]
     }

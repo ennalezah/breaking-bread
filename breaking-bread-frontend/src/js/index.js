@@ -3,8 +3,9 @@ const businessesUrl = "http://localhost:3000/api/v1/businesses"
 const citiesUrl = "http://localhost:3000/api/v1/cities/"
 
 function onLoad() {
-  fetchCities();
-  fetchBusinesses();
+    
+  fetchCities();  
+  // fetchBusinesses();
 
 
   const newForm = document.getElementById("new-business-form");
@@ -16,7 +17,7 @@ function onLoad() {
 
 
 function neighborhoodHandler(e) {
-  alert(e.target.innerText)
+  console.log(e.target);
 } 
 
 
@@ -30,7 +31,9 @@ function fetchBusinesses() {
 }
 
 function renderBusiness(business) {  
-  const ul = document.getElementById("business-list")
+  const ul = document.querySelector(".business-list")
+
+  let neighborhoods = document.querySelector(".neighborhoods");
 
   const li = document.createElement("li");
   li.dataset.id = business.id;
@@ -38,9 +41,14 @@ function renderBusiness(business) {
 
   const info = document.createElement("p");
   info.innerHTML = `${business.phone}<br>${business.instagram}`
-  li.appendChild(info);
+  li.append(info);
 
-  ul.appendChild(li);
+  ul.append(li);
+
+  /* 
+    if business.neighborhood_id === 
+  */
+  
 }
 
 function submitFormData(name, phone, website, instagram, neighborhood_id) {
@@ -95,16 +103,17 @@ function renderCity(city) {
 
 /* NEIGHBORHOOD - Left Col*/
 function renderNeighborhood(neighborhood) {
-  const neighborhoodsContainer = document.getElementById("neighborhoods");
-
+  let neighborhoodsContainer = document.querySelector(".neighborhoods");
 
   let name = document.createElement("h3");
 
-  name.className += "neighborhood"
+  name.className += "neighborhood";
+  name.dataset.id = neighborhood.id;
 
   name.innerText = neighborhood.name;
 
-  neighborhoodsContainer.append(name); 
+  neighborhoodsContainer.append(name);
+  
 }
 
 /* BUSINESS - Right Col */
