@@ -14,7 +14,7 @@ class BusinessSerializer
     options = {
       include: { 
         neighborhood: {
-          only: [:name],
+          only: [:id, :name],
           include: {:city => { only: [:name] }} 
         } 
       },

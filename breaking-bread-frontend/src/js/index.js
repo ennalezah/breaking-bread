@@ -7,7 +7,6 @@ function onLoad() {
   fetchCities();  
   // fetchBusinesses();
 
-
   const newForm = document.getElementById("new-business-form");
   
   document.addEventListener("click", neighborhoodHandler)
@@ -21,6 +20,45 @@ function neighborhoodHandler(e) {
 } 
 
 
+
+/* CITY */
+function fetchCities() {
+  fetch(citiesUrl)
+    .then(resp => resp.json())
+    .then(json => {
+      return json.forEach(obj => renderCity(obj))
+    })
+    // .then(json => {
+    //   // return json.forEach(obj => renderCity(obj))
+    //   for (const obj of json) {
+
+    //   }
+    // })
+}
+
+function renderCity(city) {
+  // debugger
+  const cityName = document.getElementById("city-name");
+  cityName.innerText = city.name;
+
+  city.neighborhoods.forEach(neighborhood => renderNeighborhood(neighborhood));
+}
+
+
+/* NEIGHBORHOOD - Left Col*/
+function renderNeighborhood(neighborhood) {
+  let neighborhoodsContainer = document.querySelector(".neighborhoods");
+
+  let name = document.createElement("h3");
+
+  name.className += "neighborhood";
+  name.dataset.id = neighborhood.id;
+  name.innerText = neighborhood.name;
+
+  neighborhoodsContainer.append(name);  
+}
+
+
 /* BUSINESS */
 function fetchBusinesses() {
   fetch(businessesUrl)
@@ -31,10 +69,11 @@ function fetchBusinesses() {
 }
 
 function renderBusiness(business) {  
-  const ul = document.querySelector(".business-list")
+  // const ul = document.querySelector(".business-list")
 
-  let neighborhoods = document.querySelector(".neighborhoods");
-
+  const ul = document.createElement("ul");
+  ul.className = "businesses";
+  
   const li = document.createElement("li");
   li.dataset.id = business.id;
   li.innerHTML = `<a href="${business.website}" target="_blank">${business.name}</a>`;
@@ -46,7 +85,7 @@ function renderBusiness(business) {
   ul.append(li);
 
   /* 
-    if business.neighborhood_id === 
+    if business.neighborhood.name === 
   */
   
 }
@@ -83,40 +122,6 @@ function newFormHandler(e) {
 }
 
 
-/* CITY */
-function fetchCities() {
-  fetch(citiesUrl)
-    .then(resp => resp.json())
-    .then(json => {
-      return json.forEach(obj => renderCity(obj))
-    })
-}
-
-function renderCity(city) {
-  // debugger
-  const cityName = document.getElementById("city-name");
-  cityName.innerText = city.name;
-
-  city.neighborhoods.forEach(neighborhood => renderNeighborhood(neighborhood));
-}
-
-
-/* NEIGHBORHOOD - Left Col*/
-function renderNeighborhood(neighborhood) {
-  let neighborhoodsContainer = document.querySelector(".neighborhoods");
-
-  let name = document.createElement("h3");
-
-  name.className += "neighborhood";
-  name.dataset.id = neighborhood.id;
-
-  name.innerText = neighborhood.name;
-
-  neighborhoodsContainer.append(name);
-  
-}
-
-/* BUSINESS - Right Col */
 
 
 
