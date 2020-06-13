@@ -3,18 +3,24 @@ const businessesUrl = "http://localhost:3000/api/v1/businesses"
 const citiesUrl = "http://localhost:3000/api/v1/cities/"
 
 function onLoad() {
-  const newForm = document.getElementById("new-business-form");
   
+ 
 
   fetchBusinesses();
   fetchCities();
 
+  const newForm = document.getElementById("new-business-form"); 
+
+  const neighborhoodName = document.getElementsByClassName("neighborhood");
+
   newForm.addEventListener("submit", newFormHandler);
+  
+
+  neighborhoodName.target.addEventListener("click", e => console.log(e))
 }
 
 
 /* BUSINESS */
-
 function fetchBusinesses() {
   fetch(businessesUrl)
     .then(resp => resp.json())
@@ -52,9 +58,7 @@ function submitFormData(name, phone, website, instagram, neighborhood_id) {
   fetch(url, configObj)
     .then(resp => resp.json())
     .then(json => {
-      // console.log(json)
       renderBusiness(json);
-      // debugger
     })
 }
 
@@ -72,7 +76,6 @@ function newFormHandler(e) {
 
 
 /* CITY */
-
 function fetchCities() {
   fetch(citiesUrl)
     .then(resp => resp.json())
@@ -84,25 +87,32 @@ function fetchCities() {
 function renderCity(city) {
   // debugger
   const cityName = document.getElementById("city-name");
-
-  const neighborhoods = document.getElementById("neighborhoods");
-
   cityName.innerText = city.name;
 
-  for (const neighborhood of city.neighborhoods) {
-    const neighborhoodName = document.createElement("h3");
+  const neighborhoods = city.neighborhoods;  
 
-    neighborhoodName.innerText = neighborhood.name;
-
-    neighborhoods.append(neighborhoodName);
-  }
-
-  
-
-  // cityHeader.appendChild(cityName);
-   
+  renderNeighborhoods(neighborhoods)  
 }
 
+
+/* NEIGHBORHOOD - Left Col*/
+function renderNeighborhoods(neighborhoods) {
+  const neighborhoodsContainer = document.getElementById("neighborhoods");
+
+  for (const neighborhood of neighborhoods) {
+    // debugger
+
+    let name = document.createElement("h3");
+
+    name.className = "neighborhood"
+
+    name.innerText = neighborhood.name;
+
+    neighborhoodsContainer.append(name);
+  }   
+}
+
+/* BUSINESS - Right Col */
 
 
 
