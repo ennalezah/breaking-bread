@@ -5,7 +5,7 @@ const citiesUrl = "http://localhost:3000/api/v1/cities/"
 function onLoad() {
     
   fetchCities();  
-  // fetchBusinesses();
+  fetchBusinesses();
 
   const newForm = document.getElementById("new-business-form");
   
@@ -16,7 +16,7 @@ function onLoad() {
 
 
 function neighborhoodHandler(e) {
-  console.log(e.target);
+  console.log(e.target.dataset.id);
 } 
 
 
@@ -75,17 +75,26 @@ function renderBusiness(business) {
   ul.className = "businesses";
   
   const li = document.createElement("li");
+
   li.dataset.id = business.id;
   li.innerHTML = `<a href="${business.website}" target="_blank">${business.name}</a>`;
 
   const info = document.createElement("p");
-  info.innerHTML = `${business.phone}<br>${business.instagram}`
-  li.append(info);
+  info.innerHTML = `${business.phone}<br>${business.instagram}`;
 
+  li.append(info);
   ul.append(li);
 
+  // let n = document.querySelector(".neighborhood");
+
+  // n.append(ul);
+  // debugger
+
+
+  return ul;
+
   /* 
-    if business.neighborhood.name === 
+    if business.neighborhood.id === e.target.dataset.id, then display business info (ul)
   */
   
 }
