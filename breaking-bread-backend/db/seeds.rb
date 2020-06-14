@@ -86,10 +86,6 @@ la.neighborhoods.create([
   { name: 'Windsor Hills' }
   ])
 
-# City.create([{ name: 'Los Angeles', abbrev: 'LA' }, { name: 'San Francisco', abbrev: 'SF' }])
-
-# Neighborhood.create([{ name: 'Alhambra', city_id: 1 }, { name: 'Altadena', city_id: 1 }])
-
 # Business.create([{
 #                   name: "Wilson's Bbq Rib Shack", phone: "(323) 457-0258", website: "https://www.wilsonsbbqribshack.com", instagram: "@wilsonsbbqribshack", neighborhood_id: 1
 #                  }, 
