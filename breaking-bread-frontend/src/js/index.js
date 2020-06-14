@@ -41,7 +41,7 @@ function renderCity(city) {
 
 /* NEIGHBORHOOD - Left Col*/
 function renderNeighborhood(neighborhood) {
-  const neighborhoods = document.querySelector(".neighborhoods");
+  const neighborhoods = document.querySelector(".neighborhoods");  
 
   const neighborhoodContainer = document.createElement("div");
   neighborhoodContainer.className += "neighborhood";
@@ -52,6 +52,17 @@ function renderNeighborhood(neighborhood) {
   const neighborhoodName = document.getElementsByClassName("neighborhood-name");
 
   neighborhoods.append(neighborhoodContainer);  
+
+  addNeighborhoodstoNewForm(neighborhood);
+
+}
+
+function addNeighborhoodstoNewForm(neighborhood) {
+  const dropdown = document.querySelector("select#new-neighborhoods");
+
+  const option = `<option value="${neighborhood.id}">${neighborhood.name}</option>`
+
+  dropdown.innerHTML += option
 }
 
 
