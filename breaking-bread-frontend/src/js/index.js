@@ -6,12 +6,10 @@ function onLoad() {
     
   fetchCities();  
   fetchBusinesses();
-
-  const newForm = document.getElementById("new-business-form");
   
   document.addEventListener("click", neighborhoodHandler)
 
-  newForm.addEventListener("submit", newFormHandler);
+  document.getElementById("new-business-form").addEventListener("submit", newFormHandler);
 }
 
 
@@ -106,14 +104,17 @@ function submitNewForm(name, phone, website, instagram, neighborhood_id) {
   fetch(businessesUrl, configObj)
     .then(resp => resp.json())
     .then(json => {
-      console.log(json)
-      debugger
-      // renderBusiness(json);
+      // console.log(json)
+      // debugger
+      renderBusiness(json);
     })
 }
 
 function newFormHandler(e) {
+
   e.preventDefault();
+  // document.getElementById("new-business-form").reset();
+  // debugger
 
   const name = document.getElementById("new-name").value;
   const phone = document.getElementById("new-phone").value;
@@ -122,6 +123,7 @@ function newFormHandler(e) {
   const neighborhoodId = parseInt(document.getElementById("new-neighborhoods").value);
 
   submitNewForm(name, phone, website, instagram, neighborhoodId);
+  document.getElementById("new-business-form").reset();
 }
 
 
