@@ -3,9 +3,13 @@ const businessesUrl = "http://localhost:3000/api/v1/businesses"
 const citiesUrl = "http://localhost:3000/api/v1/cities/"
 
 function onLoad() {
+    /* 
+    if business.neighborhood.id === e.target.dataset.id, then display business info (ul)
+  */  
     
   fetchCities();  
   fetchBusinesses();
+  // debugger
 
   const newForm = document.getElementById("new-business-form");
   
@@ -47,15 +51,24 @@ function renderCity(city) {
 
 /* NEIGHBORHOOD - Left Col*/
 function renderNeighborhood(neighborhood) {
-  let neighborhoodsContainer = document.querySelector(".neighborhoods");
+  const neighborhoods = document.querySelector(".neighborhoods");
 
-  let name = document.createElement("h3");
+  // const neighborhoodContainer = document.createElement("div");
 
-  name.className += "neighborhood";
-  name.dataset.id = neighborhood.id;
-  name.innerText = neighborhood.name;
+  neighborhoods.innerHTML += `<div class='neighborhood' data-id=${neighborhood.id}><h3 class="neighborhood-name">${neighborhood.name}</h3></div>`
 
-  neighborhoodsContainer.append(name);  
+  const neighborhoodName = document.getElementsByClassName("neighborhood-name");
+
+  // const neighborhoodHeader = document.createElement("h3");
+
+  // neighborhoodContainer.className += "neighborhood";
+  // neighborhoodContainer.dataset.id  = neighborhood.id;
+  
+  // neighborhoodName.innerText = neighborhood.name;
+
+  // neighborhoodContainer.append(neighborhoodName);
+
+  // neighborhoods.append(neighborhoodContainer);  
 }
 
 
@@ -64,16 +77,17 @@ function fetchBusinesses() {
   fetch(businessesUrl)
     .then(resp => resp.json())
     .then(json => {
-      return json.forEach(obj => renderBusiness(obj))
-    })   
+      json.forEach(obj => renderBusiness(obj))
+    })
 }
 
 function renderBusiness(business) {  
   // const ul = document.querySelector(".business-list")
 
   const ul = document.createElement("ul");
-  ul.className = "businesses";
-  
+  // ul.className = "businesses";
+  // const ul = document.getElementsByClassName("businesses");
+
   const li = document.createElement("li");
 
   li.dataset.id = business.id;
@@ -85,18 +99,10 @@ function renderBusiness(business) {
   li.append(info);
   ul.append(li);
 
-  // let n = document.querySelector(".neighborhood");
+  let n = document.querySelector(".neighborhood");
 
   // n.append(ul);
   // debugger
-
-
-  return ul;
-
-  /* 
-    if business.neighborhood.id === e.target.dataset.id, then display business info (ul)
-  */
-  
 }
 
 function submitFormData(name, phone, website, instagram, neighborhood_id) {
