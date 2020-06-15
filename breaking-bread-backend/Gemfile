@@ -41,3 +41,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'database_cleaner', '~> 1.5', '>= 1.5.3'
+
+gem 'activerecord-import', '~> 1.0', '>= 1.0.5'

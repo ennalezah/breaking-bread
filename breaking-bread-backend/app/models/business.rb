@@ -1,4 +1,5 @@
 class Business < ApplicationRecord
+
   belongs_to :neighborhood
 
   validates :name, presence: true
@@ -8,7 +9,6 @@ class Business < ApplicationRecord
   #   format: { with: /\A[0-9]+\z/, message: "Only allows numbers" }
 
   before_validation :titleize_name, :format_phone
-  
 
   private
 
