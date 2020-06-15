@@ -2,8 +2,10 @@ const businessesUrl = "http://localhost:3000/api/v1/businesses"
 
 const citiesUrl = "http://localhost:3000/api/v1/cities/"
 
-function onLoad() {
-    
+
+document.addEventListener("DOMContentLoaded", onLoad)
+
+function onLoad() {    
   fetchCities();  
   fetchBusinesses();
   
@@ -13,6 +15,7 @@ function onLoad() {
 }
 
 
+// displays businesses when neighborhood is clicked on
 function neighborhoodHandler(e) {
   console.log(e.target.dataset.id);
 } 
@@ -25,7 +28,7 @@ function fetchCities() {
     .then(resp => resp.json())
     .then(json => {
       return json.forEach(obj => renderCity(obj))
-    })
+    }) 
 }
 
 function renderCity(city) {
@@ -49,10 +52,9 @@ function renderNeighborhood(neighborhood) {
 
   const neighborhoodName = document.getElementsByClassName("neighborhood-name");
 
-  neighborhoods.append(neighborhoodContainer);  
+  neighborhoods.appendChild(neighborhoodContainer);  
 
   addNeighborhoodstoNewForm(neighborhood);
-
 }
 
 function addNeighborhoodstoNewForm(neighborhood) {
@@ -76,7 +78,8 @@ function fetchBusinesses() {
 }
 
 function renderBusiness(business) {  
-  const businessList = document.querySelector(`[data-neighborhood-businesses="${business.neighborhood.id}"]`);
+  const businessList = document.querySelector(`ul[data-neighborhood-businesses="${business.neighborhood.id}"]`);
+  debugger
 
   const neighborhoodId = businessList.getAttribute('data-neighborhood-businesses');  
 
@@ -86,7 +89,7 @@ function renderBusiness(business) {
   // li.innerHTML += `<a href="${business.website}" target="_blank">${business.name}</a>`;
   li.innerHTML += `<strong>${business.name}</strong><br>Ph: ${business.phone}<br>IG: ${business.instagram}<br><a href="${business.website}" target="_blank">Go to website</a>`;
 
-  businessList.append(li);
+  businessList.appendChild(li);
 }
 
 function submitNewForm(name, phone, website, instagram, neighborhood_id) {
@@ -124,6 +127,13 @@ function newFormHandler(e) {
 
   submitNewForm(name, phone, website, instagram, neighborhoodId);
   document.getElementById("new-business-form").reset();
+  alert("Thank you for adding to the list!")
+  // name.value = '';
+  // phone.value = '';
+  // website.value = '';
+  // instagram.value = '';
+  // neighborhoodId.value = '';
+  
 }
 
 
@@ -131,4 +141,4 @@ function newFormHandler(e) {
 
 
 
-onLoad();
+// onLoad();

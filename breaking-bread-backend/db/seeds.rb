@@ -6,9 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-require 'database_cleaner'
-
-DatabaseCleaner.clean_with(:truncation)
+# require 'database_cleaner'
+# DatabaseCleaner.clean_with(:truncation)
 
 la = City.create(name: 'Los Angeles', abbrev: 'LA')
 
@@ -84,15 +83,24 @@ la.neighborhoods.create([
   { name: 'Westchester' },
   { name: 'West Hollywood' },
   { name: 'Windsor Hills' }
-  ])
+])
 
-# Business.create([{
-#                   name: "Wilson's Bbq Rib Shack", phone: "(323) 457-0258", website: "https://www.wilsonsbbqribshack.com", instagram: "@wilsonsbbqribshack", neighborhood_id: 1
-#                  }, 
+alhambra = Neighborhood.all.first;
+
+alhambra.businesses.create(name: "Wilson's Bbq Rib Shack", phone: "(323) 457-0258", website: "https://www.wilsonsbbqribshack.com", instagram: "@wilsonsbbqribshack")
+
+
+altadena = Neighborhood.find_by(id: 2)
+
+
+
+Business.create([{
+                  name: "Wilson's Bbq Rib Shack", phone: "(323) 457-0258", website: "https://www.wilsonsbbqribshack.com", instagram: "@wilsonsbbqribshack", neighborhood_id: 1
+                 }, 
            
-#                  {
-#                   name: "Little Red Hen Coffee Shop", phone: "(626) 791-1614" , website: "https://little-red-hen-coffee-shop.hub.biz/?fbclid=IwAR1MZtXbf2HM5eY6W5hX91uaCIFxG1QcAhHpu235BwavmVMhjEzPmEYDPFM" , instagram: "@thelittleredhencoffeeshop", neighborhood_id: 2
-#                  }])
+                 {
+                  name: "Little Red Hen Coffee Shop", phone: "(626) 791-1614" , website: "https://little-red-hen-coffee-shop.hub.biz/?fbclid=IwAR1MZtXbf2HM5eY6W5hX91uaCIFxG1QcAhHpu235BwavmVMhjEzPmEYDPFM" , instagram: "@thelittleredhencoffeeshop", neighborhood_id: 2
+                 }])
 
 
 
