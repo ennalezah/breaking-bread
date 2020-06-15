@@ -7,6 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'database_cleaner'
+# require 'csv'
+# require 'activerecord-import/base'
 
 DatabaseCleaner.clean_with(:truncation)
 
@@ -86,8 +88,8 @@ la.neighborhoods.create([
   { name: 'Windsor Hills' }
 ])
 
-Business.import_from_csv()
-
 # alhambra = Neighborhood.all.first;
 
 # alhambra.businesses.create(name: "Wilson's Bbq Rib Shack", phone: "(323) 457-0258", website: "https://www.wilsonsbbqribshack.com", instagram: "@wilsonsbbqribshack")
+
+Business.import_from_csv

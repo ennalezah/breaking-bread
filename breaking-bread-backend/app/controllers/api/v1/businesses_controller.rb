@@ -4,6 +4,10 @@ class Api::V1::BusinessesController < ApplicationController
     render json: BusinessSerializer.new(businesses).to_serialized_json, status: :accepted
   end
 
+  def import
+    Business.import_from_csv
+  end
+
   def show
     business = Business.find_by(id: params[:id])
 
