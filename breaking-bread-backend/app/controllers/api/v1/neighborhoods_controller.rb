@@ -7,7 +7,12 @@ class Api::V1::NeighborhoodsController < ApplicationController
 
   def show
     neighborhood = Neighborhood.find_by(id: params[:id])
-    render json: neighborhood
+
+    if neighborhood
+      render json: NeighborhoodSerializer.new(neighborhood).to_serialized_json, status: :accepted
+    else
+      render json: {errors: "Neighborhood not found. Please check the ID and try again."}, status: :not_found
+    end
   end
 
 end
