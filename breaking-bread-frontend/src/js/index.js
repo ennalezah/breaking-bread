@@ -1,6 +1,6 @@
 const businessesUrl = "http://localhost:3000/api/v1/businesses"
 
-const citiesUrl = "http://localhost:3000/api/v1/cities/"
+const citiesUrl = "http://localhost:3000/api/v1/cities"
 
 
 document.addEventListener("DOMContentLoaded", onLoad)
@@ -9,17 +9,18 @@ function onLoad() {
   fetchCities();  
   fetchBusinesses();
   
-  document.addEventListener("click", neighborhoodHandler)
+  // const x = document.querySelectorAll('h3.neighborhood-name').forEach(name => {
+  //   name.addEventListener('click', neighborhoodHandler)
+  // })
 
   document.getElementById("new-business-form").addEventListener("submit", newFormHandler);
 }
 
 
 // displays businesses when neighborhood is clicked on
-function neighborhoodHandler(e) {
-  console.log(e.target.dataset.id);
-} 
-
+// function neighborhoodHandler(e) {
+//   console.log(e.target);
+// } 
 
 
 /* CITY */
@@ -27,13 +28,17 @@ function fetchCities() {
   fetch(citiesUrl)
     .then(resp => resp.json())
     .then(json => {
+      // for (const obj of json) {
+      //   // debugger
+      //   renderCity(obj)
+      // }
       return json.forEach(obj => renderCity(obj))
     }) 
 }
 
 function renderCity(city) {
   // debugger
-  const cityName = document.getElementById("city-name");
+  const cityName = document.querySelector(".city-name");
   cityName.innerText = city.name;
 
   city.neighborhoods.forEach(neighborhood => renderNeighborhood(neighborhood));
@@ -48,9 +53,10 @@ function renderNeighborhood(neighborhood) {
   neighborhoodContainer.className += "neighborhood";
   neighborhoodContainer.dataset.neighborhoodId = `${neighborhood.id}`;
 
-  neighborhoodContainer.innerHTML += `<h3>${neighborhood.name}</h3><ul data-neighborhood-businesses="${neighborhood.id}"></ul>`
+  neighborhoodContainer.innerHTML += `<h3 class="neighborhood-name">${neighborhood.name}</h3>
+  <ul data-neighborhood-businesses="${neighborhood.id}"></ul>`
 
-  const neighborhoodName = document.getElementsByClassName("neighborhood-name");
+  // const neighborhoodName = document.getElementsByClassName("neighborhood-name");
 
   neighborhoods.appendChild(neighborhoodContainer);  
 
@@ -71,17 +77,22 @@ function fetchBusinesses() {
   fetch(businessesUrl)
     .then(resp => resp.json())
     .then(json => {
-      json.forEach(obj => renderBusiness(obj))
+      // console.log(json)
+      // debugger
+      for (const obj of json) {
+        renderBusiness(obj)
+      }
+      // json.forEach(obj => renderBusiness(obj))
       // renderBusinesses(json)
     })
     // .then(json => json)
 }
 
 function renderBusiness(business) {  
-  const businessList = document.querySelector(`ul[data-neighborhood-businesses="${business.neighborhood.id}"]`);
-  debugger
+  const ul = document.querySelector(`[data-neighborhood-businesses="${business.neighborhood.id}"]`);
+  // debugger
 
-  const neighborhoodId = businessList.getAttribute('data-neighborhood-businesses');  
+  const neighborhoodId = ul.dataset.neighborhoodBusinesses;  
 
   const li = document.createElement("li");
 
@@ -89,7 +100,7 @@ function renderBusiness(business) {
   // li.innerHTML += `<a href="${business.website}" target="_blank">${business.name}</a>`;
   li.innerHTML += `<strong>${business.name}</strong><br>Ph: ${business.phone}<br>IG: ${business.instagram}<br><a href="${business.website}" target="_blank">Go to website</a>`;
 
-  businessList.appendChild(li);
+  ul.appendChild(li);
 }
 
 function submitNewForm(name, phone, website, instagram, neighborhood_id) {

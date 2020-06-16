@@ -4,17 +4,13 @@ class Api::V1::BusinessesController < ApplicationController
     render json: BusinessSerializer.new(businesses).to_serialized_json, status: :accepted
   end
 
-  def import
-    Business.import_from_csv
-  end
-
   def show
-    business = Business.find_by(id: params[:id])
+    business = Business.find_by(id:params[:id])
 
     if business
       render json: BusinessSerializer.new(business).to_serialized_json, status: :accepted
     else
-      render json: {errors: business.errors.full_messages}, status: :not_found
+      render json: {errors: "Business not found. Please check the ID and try again."}, status: :not_found
     end
   end
 
