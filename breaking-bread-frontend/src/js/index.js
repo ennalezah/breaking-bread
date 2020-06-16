@@ -29,13 +29,7 @@ function onLoad() {
 function fetchCities() {
   fetch(citiesUrl)
     .then(resp => resp.json())
-    .then(json => {
-      // for (const obj of json) {
-      //   // debugger
-      //   renderCity(obj)
-      // }
-      return json.forEach(obj => renderCity(obj))
-    }) 
+    .then(json => json.forEach(obj => renderCity(obj))) 
 }
 
 function renderCity(city) {
@@ -50,39 +44,26 @@ function renderCity(city) {
 
 
 /****** NEIGHBORHOOD ******/
-
 function fetchNeighborhoods() {
   fetch(neighborhoodsUrl)
     .then(resp => resp.json())
-    .then(json => {
-      // for (const obj of json) {
-      //   // debugger
-      //   renderNeighborhood(obj)
-      // }
-      console.log(json)
-      // debugger
-      json.forEach(obj => renderNeighborhood(obj))
-    }) 
+    .then(json => json.forEach(obj => renderNeighborhood(obj))) 
 }
 
 function renderNeighborhood(neighborhood) {
-  // let citySection = document.querySelector(`[data-city-id="${neighborhood.city.id}"]`);
-  // debugger
-
   addNeighborhoodstoNewForm(neighborhood);
 
   const neighborhoods = document.querySelector(".neighborhoods");  
 
   const neighborhoodContainer = document.createElement("div");
+
   neighborhoodContainer.className += "neighborhood";
+
   neighborhoodContainer.dataset.neighborhoodId = `${neighborhood.id}`;
 
-  neighborhoodContainer.innerHTML += `<h3 class="neighborhood-name">${neighborhood.name}</h3>
-  <ul data-neighborhood-businesses="${neighborhood.id}"></ul>`
+  neighborhoodContainer.innerHTML += `<h3 class="neighborhood-name">${neighborhood.name}</h3><ul data-neighborhood-businesses="${neighborhood.id}"></ul>`
 
-  neighborhoods.appendChild(neighborhoodContainer);  
-
-  
+  neighborhoods.appendChild(neighborhoodContainer);   
 }
 
 function addNeighborhoodstoNewForm(neighborhood) {
@@ -90,7 +71,7 @@ function addNeighborhoodstoNewForm(neighborhood) {
 
   const option = `<option value="${neighborhood.id}">${neighborhood.name}</option>`
 
-  dropdown.innerHTML += option
+  dropdown.innerHTML += option;
 }
 
 
@@ -127,18 +108,11 @@ function submitNewForm(name, phone, website, instagram, neighborhood_id) {
 
   fetch(businessesUrl, configObj)
     .then(resp => resp.json())
-    .then(json => {
-      // console.log(json)
-      // debugger
-      renderBusiness(json);
-    })
+    .then(json => renderBusiness(json))
 }
 
 function newFormHandler(e) {
-
   e.preventDefault();
-  // document.getElementById("new-business-form").reset();
-  // debugger
 
   const name = document.getElementById("new-name").value;
   const phone = document.getElementById("new-phone").value;
@@ -147,14 +121,15 @@ function newFormHandler(e) {
   const neighborhoodId = parseInt(document.getElementById("new-neighborhoods").value);
 
   submitNewForm(name, phone, website, instagram, neighborhoodId);
+
   document.getElementById("new-business-form").reset();
-  alert("Thank you for adding to the list!")
+
+  alert("Thank you for adding to the list!");
   // name.value = '';
   // phone.value = '';
   // website.value = '';
   // instagram.value = '';
-  // neighborhoodId.value = '';
-  
+  // neighborhoodId.value = '';  
 }
 
 
