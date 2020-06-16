@@ -11,7 +11,7 @@ class NeighborhoodSerializer
           only: [:id, :name]
         }
       },
-      except: [:city_id, :created_at, :updated_at]
+      except: [:created_at, :updated_at]
     }
 
     @neighborhood.to_json(options)
