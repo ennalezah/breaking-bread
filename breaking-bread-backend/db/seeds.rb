@@ -88,8 +88,47 @@ la.neighborhoods.create([
   { name: 'Windsor Hills' }
 ])
 
-# alhambra = Neighborhood.all.first;
+alhambra = Neighborhood.all.first;
+alhambra.businesses.create(name: "Wilson's Bbq Rib Shack", phone: "(323) 457-0258", website: "https://www.wilsonsbbqribshack.com", instagram: "@wilsonsbbqribshack")
 
-# alhambra.businesses.create(name: "Wilson's Bbq Rib Shack", phone: "(323) 457-0258", website: "https://www.wilsonsbbqribshack.com", instagram: "@wilsonsbbqribshack")
 
-Business.import_from_csv
+altadena = Neighborhood.find_by(name: "Altadena")
+altadena.businesses.create([{
+    name: "Little Red Hen Coffee Shop",
+    phone: "(626) 791-1614",
+    website: "https://www.yelp.com/biz/the-little-red-hen-coffee-shop-altadena",
+    instagram: "@thelittleredhencoffeeshop"
+  },
+  {
+    name: "UEDF Fish & Chips",
+    phone: "(626) 794-0277",
+    website: "https://www.yelp.com/biz/uedf-fish-and-chips-altadena",
+    instagram: "N/A"
+  }
+])
+
+
+anaheim = Neighborhood.find_by(name: "Anaheim")
+anaheim.businesses.create([{
+    name: "Georgia's Restaurant",
+    phone: "(714) 906-1900",
+    website: "https://www.georgias-restaurant.com/",
+    instagram: "@georgiassoul"
+  },
+  {
+    name: "Roscoe's Chicken and Waffles",
+    phone: "(714) 823-4130",
+    website: "https://www.roscoeschickenandwaffles.com/",
+    instagram: "@roscoesofficial"
+  }
+])
+
+
+atwaterVillage = Neighborhood.find_by(name: "Atwater Village");
+atwaterVillage.businesses.create(name: "Chicken N Chips", phone: "(323) 922-1070", website: "https://chickennchips.com/", instagram: "@chickennchips")
+
+
+azusa = Neighborhood.find_by(name: "Azusa");
+azusa.businesses.create(name: "Keith's Kettle Corn", phone: "(626) 804-7999", website: "https://www.keithskettlecorn.com/", instagram: "@keithskettlecorn")
+
+# Business.import_from_csv

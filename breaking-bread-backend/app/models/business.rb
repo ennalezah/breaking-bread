@@ -1,9 +1,8 @@
 class Business < ApplicationRecord
-  require 'csv'
-  require 'active_record'
-  require 'activerecord-import/base'
-  require 'activerecord-import/active_record/adapters/sqlite3_adapter'
-
+  # require 'csv'
+  # require 'active_record'
+  # require 'activerecord-import/base'
+  # require 'activerecord-import/active_record/adapters/sqlite3_adapter'
 
   belongs_to :neighborhood
   validates :name, presence: true
@@ -14,20 +13,18 @@ class Business < ApplicationRecord
 
   before_save :titleize_name, :format_phone
 
-  def self.import_from_csv   
-    neighborhoods = Neighborhood.pluck(:id, :name).to_h
-
-    businesses = []
+  # def self.import_from_csv   
+  #   businesses = []
     
-    CSV.foreach('lib/la_businesses.csv', headers: true) do |row|
-      # neighborhood_id = neighborhoods[row[:neighborhood]]
+  #   CSV.foreach('lib/la_businesses_seeds.csv', headers: true) do |row|
+  #     # neighborhood_id = neighborhoods[row[:neighborhood]]
     
-      business = { name: row[:restaurant],phone: row[:phone], website: row[:website], instagram: row[:ig], neighborhood: neighborhood }
+  #     business = { name: row[:restaurant],phone: row[:phone], website: row[:website], instagram: row[:ig], neighborhood: neighborhood }
     
-      businesses << business
-    end
-    Business.import businesses, validate: false
-  end
+  #     businesses << business
+  #   end
+  #   Business.import businesses, validate: false
+  # end
 
   private
 
