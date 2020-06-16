@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", onLoad)
 function onLoad() {    
   fetchCities();  
   fetchNeighborhoods();
+  
   fetchBusinesses();
   
   // const x = document.querySelectorAll('h3.neighborhood-name').forEach(name => {
@@ -38,12 +39,15 @@ function fetchCities() {
 }
 
 function renderCity(city) {
-  // debugger
-  const cityName = document.querySelector(".city-name");
-  cityName.innerText = city.name;
+  let citySection = document.querySelector("#black-owned-businesses");
+
+  citySection.dataset.cityId = `${city.id}`
+  citySection.innerHTML += `<h1 class="city-name">${city.name}</h1>
+  <div class="neighborhoods"></div>`
 
   city.neighborhoods.forEach(neighborhood => renderNeighborhood(neighborhood));
 }
+
 
 /****** NEIGHBORHOOD ******/
 
@@ -55,11 +59,18 @@ function fetchNeighborhoods() {
       //   // debugger
       //   renderNeighborhood(obj)
       // }
+      console.log(json)
+      // debugger
       json.forEach(obj => renderNeighborhood(obj))
     }) 
 }
 
 function renderNeighborhood(neighborhood) {
+  // let citySection = document.querySelector(`[data-city-id="${neighborhood.city.id}"]`);
+  // debugger
+
+  addNeighborhoodstoNewForm(neighborhood);
+
   const neighborhoods = document.querySelector(".neighborhoods");  
 
   const neighborhoodContainer = document.createElement("div");
@@ -69,11 +80,9 @@ function renderNeighborhood(neighborhood) {
   neighborhoodContainer.innerHTML += `<h3 class="neighborhood-name">${neighborhood.name}</h3>
   <ul data-neighborhood-businesses="${neighborhood.id}"></ul>`
 
-  // const neighborhoodName = document.getElementsByClassName("neighborhood-name");
-
   neighborhoods.appendChild(neighborhoodContainer);  
 
-  addNeighborhoodstoNewForm(neighborhood);
+  
 }
 
 function addNeighborhoodstoNewForm(neighborhood) {
@@ -89,28 +98,16 @@ function addNeighborhoodstoNewForm(neighborhood) {
 function fetchBusinesses() {
   fetch(businessesUrl)
     .then(resp => resp.json())
-    .then(json => {
-      // console.log(json)
-      // debugger
-      for (const obj of json) {
-        renderBusiness(obj)
-      }
-      // json.forEach(obj => renderBusiness(obj))
-      // renderBusinesses(json)
-    })
-    // .then(json => json)
+    .then(json => json.forEach(obj => renderBusiness(obj)))
 }
 
 function renderBusiness(business) {  
   const ul = document.querySelector(`[data-neighborhood-businesses="${business.neighborhood.id}"]`);
-  // debugger
-
-  const neighborhoodId = ul.dataset.neighborhoodBusinesses;  
 
   const li = document.createElement("li");
 
   li.dataset.businessId = business.id;
-  // li.innerHTML += `<a href="${business.website}" target="_blank">${business.name}</a>`;
+
   li.innerHTML += `<strong>${business.name}</strong><br>Ph: ${business.phone}<br>IG: ${business.instagram}<br><a href="${business.website}" target="_blank">Go to website</a>`;
 
   ul.appendChild(li);
