@@ -1,12 +1,13 @@
-const businessesUrl = "http://localhost:3000/api/v1/businesses"
-
 const citiesUrl = "http://localhost:3000/api/v1/cities"
+const neighborhoodsUrl = "http://localhost:3000/api/v1/neighborhoods"
+const businessesUrl = "http://localhost:3000/api/v1/businesses"
 
 
 document.addEventListener("DOMContentLoaded", onLoad)
 
 function onLoad() {    
   fetchCities();  
+  fetchNeighborhoods();
   fetchBusinesses();
   
   // const x = document.querySelectorAll('h3.neighborhood-name').forEach(name => {
@@ -23,7 +24,7 @@ function onLoad() {
 // } 
 
 
-/* CITY */
+/****** CITY ******/
 function fetchCities() {
   fetch(citiesUrl)
     .then(resp => resp.json())
@@ -44,8 +45,20 @@ function renderCity(city) {
   city.neighborhoods.forEach(neighborhood => renderNeighborhood(neighborhood));
 }
 
+/****** NEIGHBORHOOD ******/
 
-/* NEIGHBORHOOD - Left Col*/
+function fetchNeighborhoods() {
+  fetch(neighborhoodsUrl)
+    .then(resp => resp.json())
+    .then(json => {
+      // for (const obj of json) {
+      //   // debugger
+      //   renderNeighborhood(obj)
+      // }
+      json.forEach(obj => renderNeighborhood(obj))
+    }) 
+}
+
 function renderNeighborhood(neighborhood) {
   const neighborhoods = document.querySelector(".neighborhoods");  
 
@@ -72,7 +85,7 @@ function addNeighborhoodstoNewForm(neighborhood) {
 }
 
 
-/* BUSINESS */
+/****** BUSINESS ******/
 function fetchBusinesses() {
   fetch(businessesUrl)
     .then(resp => resp.json())
