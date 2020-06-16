@@ -5,7 +5,7 @@ class Api::V1::BusinessesController < ApplicationController
   end
 
   def show
-    business = Business.find_by(id:params[:id])
+    business = Business.find_by(id: params[:id])
 
     if business
       render json: BusinessSerializer.new(business).to_serialized_json, status: :accepted
