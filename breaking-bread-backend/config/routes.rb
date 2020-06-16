@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do      
       resources :cities, only: [:index, :show]
-      resources :neighborhoods, only: [:index, :show, :create]
+      resources :neighborhoods, only: [:index, :show]
       resources :businesses, only: [:index, :show, :create]
     end
   end
