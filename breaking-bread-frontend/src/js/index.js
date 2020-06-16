@@ -47,7 +47,8 @@ function renderCity(city) {
 function fetchNeighborhoods() {
   fetch(neighborhoodsUrl)
     .then(resp => resp.json())
-    .then(json => json.forEach(obj => renderNeighborhood(obj))) 
+    .then(json => console.log(json)) 
+    // .then(json => json.forEach(obj => renderNeighborhood(obj))) 
 }
 
 function renderNeighborhood(neighborhood) {
