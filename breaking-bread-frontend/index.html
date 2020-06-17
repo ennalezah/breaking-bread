@@ -9,27 +9,29 @@
 
   </head>
   <body>
-    <section id="black-owned-businesses">
-      <!-- <h1 class="city-name"></h1>
-      <div class="neighborhoods"></div> -->
-    </section>    
-
-    <section id="new-business">
-      <h1>Don't see your favorite black-owned restaurant listed?</h1>
-      <p>Complete the form below. If info is unavailable for a specific field, please enter N/A.</p>
-
-      <form id="new-business-form" action="http://localhost:3000/api/v1/businesses" method="POST">
-        <label> Business Name: <input type="text" name="name" id="new-name" required /></label><br />
-        <label> Phone: <input type="text" name="phone" id="new-phone" placeholder="(###) ###-####" required /></label><br />
-        <label> Website or Yelp: <input type="text" name="website" id="new-website" required /></label><br />
-        <label> Instagram: <input type="text" name="ig" id="new-ig" required /></label><br />
-        <label> Neighborhood: </label>
-        <select id="new-neighborhoods" name="neighborhoods">
-        </select><br>
-        <!-- <label> Neighborhood: <input type="text" name="neighborhood" id="new-neighborhood" required /></label><br /> -->
-        <input type="submit" name="submit" id="submit" value="Submit" />
-      </form>
-    </section>
+    <div class="container">
+      <section id="black-owned-businesses">
+        <!-- <h1 class="city-name"></h1>
+        <div class="neighborhoods"></div> -->
+      </section>    
+  
+      <section id="new-business">
+        <h1>Don't see your favorite black-owned restaurant listed?</h1>
+        <p>Complete the form below. If info is unavailable for a specific field, please enter N/A.</p>
+  
+        <form id="new-business-form" action="http://localhost:3000/api/v1/businesses" method="POST">
+          <label> Business Name: <input type="text" name="name" id="new-name" required /></label><br />
+          <label> Phone: <input type="text" name="phone" id="new-phone" placeholder="(###) ###-####" required /></label><br />
+          <label> Website or Yelp: <input type="text" name="website" id="new-website" required /></label><br />
+          <label> Instagram: <input type="text" name="ig" id="new-ig" required /></label><br />
+          <label> Neighborhood: </label>
+          <select id="new-neighborhoods" name="neighborhoods">
+          </select><br>
+          <!-- <label> Neighborhood: <input type="text" name="neighborhood" id="new-neighborhood" required /></label><br /> -->
+          <input type="submit" name="submit" id="submit" value="Submit" />
+        </form>
+      </section>
+    </div>    
 
     <script src="./src/js/index.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>

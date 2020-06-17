@@ -96,7 +96,7 @@ function renderBusiness(business) {
 }
 
 function submitNewForm(name, phone, website, instagram, neighborhood_id) {
-  let formData = {name, phone, website, instagram, neighborhood_id};
+  let businessData = {name, phone, website, instagram, neighborhood_id};
 
   let configObj = {
     method: "POST",
@@ -104,7 +104,7 @@ function submitNewForm(name, phone, website, instagram, neighborhood_id) {
       "Content-Type": "application/json",
       "Accept": "application/json"
     },
-    body: JSON.stringify(formData)
+    body: JSON.stringify(businessData)
   };
 
   fetch(businessesUrl, configObj)
