@@ -24,29 +24,46 @@
     </div>
 
     
-      <section id="black-owned-businesses" class="container py-5 ">
-        <h3>Neighborhoods</h3>
-        
-        
+      <section id="black-owned-businesses" class="container py-5 ">       
         
       </section>    
   
       <section id="new-business" class="container py-5">
-        <h3 align="center">Did we forget to add a business?</h3>
+        <h3 align="center">Don't see your favorite Black-owned restaurant listed?</h3>
         <p align="center">Complete the form below. All fields must be filled out. If info is unavailable for a field, <strong>please enter N/A.</strong><br>
         To suggest an edit for a business that is already listed, please send it <a href="mailto:hae.villareal@gmail.com?subject=Breaking Bread: Suggest an edit">here.</a></p>
         <br>
   
         <form id="new-business-form" action="http://localhost:3000/api/v1/businesses" method="POST">
-          <label> Business Name: <input type="text" name="name" id="new-name" required /></label><br />
-          <label> Phone: <input type="text" name="phone" id="new-phone" placeholder="(###) ###-####" required /></label><br />
-          <label> Website or Yelp: <input type="text" name="website" id="new-website" required /></label><br />
-          <label> Instagram: <input type="text" name="ig" id="new-ig" required /></label><br />
-          <label> Neighborhood: </label>
-          <select id="new-neighborhoods" name="neighborhoods">
-          </select><br>
+          <div class="form-group">
+            <label for="new-name"> Business Name:</label>
+            <input type="text" name="name" id="new-name" class="form-control" required />
+          </div>
+
+          <div class="form-group">
+            <label for="new-phone">Phone:</label>
+            <input type="text" name="phone" id="new-phone" placeholder="(310) 555-1234 or 310-555-1234" class="form-control" required />
+          </div>
+
+          <div class="form-group">
+            <label for="new-website">Website or Yelp Link:</label>
+            <input type="text" name="website" id="new-website" class="form-control" placeholder="https://www.thisisanexample.com/" required />
+          </div>
+
+          <div class="form-group">
+            <label for="new-instagram">Instagram:</label>
+            <input type="text" name="ig" id="new-ig" class="form-control" placeholder="@businessinstahandle"required />
+          </div>
+
+          <div class="form-group">
+            <label for="new-neighborhood"> Neighborhood:</label>
+            <select class="form-control" id="new-neighborhood" name="neighborhood">
+              <option selected disabled value="">Select one</option>
+            </select>
+          </div>      
+          
           <!-- <label> Neighborhood: <input type="text" name="neighborhood" id="new-neighborhood" required /></label><br /> -->
-          <input type="submit" name="submit" id="submit" value="Submit" />
+          <button type="submit" class="btn btn-warning" value="Submit" />Submit</button>
         </form>
       </section>
 
@@ -56,9 +73,10 @@
         </div>
       </footer>
     
-    <script src="./src/js/index.js"></script>
+    
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script src="./src/js/index.js"></script>
   </body>
 </html>

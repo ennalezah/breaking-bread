@@ -7,23 +7,11 @@ document.addEventListener("DOMContentLoaded", onLoad)
 
 function onLoad() {    
   fetchCities();  
-  fetchNeighborhoods();
-  
+  fetchNeighborhoods();  
   fetchBusinesses();
-  
-  // const x = document.querySelectorAll('h3.neighborhood-name').forEach(name => {
-  //   name.addEventListener('click', neighborhoodHandler)
-  // })
 
   document.getElementById("new-business-form").addEventListener("submit", newFormHandler);
 }
-
-
-// displays businesses when neighborhood is clicked on
-// function neighborhoodHandler(e) {
-//   console.log(e.target);
-// } 
-
 
 /****** CITY ******/
 function fetchCities() {
@@ -63,13 +51,13 @@ function renderNeighborhood(neighborhood) {
 
   neighborhoodContainer.dataset.neighborhoodId = `${neighborhood.id}`;
 
-  neighborhoodContainer.innerHTML += `<h3 class="neighborhood-name">${neighborhood.name}</h3><ul class="list-unstyled" data-neighborhood-businesses="${neighborhood.id}"></ul>`
+  neighborhoodContainer.innerHTML += `<h4 class="neighborhood-name">${neighborhood.name}</h4><ul class="list-unstyled" data-neighborhood-businesses="${neighborhood.id}"></ul>`
 
   neighborhoods.appendChild(neighborhoodContainer);   
 }
 
 function addNeighborhoodstoNewForm(neighborhood) {
-  const dropdown = document.querySelector("select#new-neighborhoods");
+  const dropdown = document.querySelector("select#new-neighborhood");
 
   const option = `<option value="${neighborhood.id}">${neighborhood.name}</option>`
 
@@ -87,11 +75,11 @@ function fetchBusinesses() {
 function renderBusiness(business) {  
   const ul = document.querySelector(`[data-neighborhood-businesses="${business.neighborhood.id}"]`);
 
-  const li = document.createElement("li");
+  let li = document.createElement("li");
 
   li.dataset.businessId = business.id;
 
-  li.innerHTML += `<strong>${business.name}</strong><br>Ph: ${business.phone}<br>IG: ${business.instagram}<br><a href="${business.website}" target="_blank">Go to website</a>`;
+  li.innerHTML += `<br><strong>${business.name}</strong><br>Ph: ${business.phone}<br>IG: ${business.instagram}<br><a href="${business.website}" target="_blank">Go to website</a>`;
 
   ul.appendChild(li);
 }
@@ -120,7 +108,7 @@ function newFormHandler(e) {
   const phone = document.getElementById("new-phone").value;
   const website = document.getElementById("new-website").value;
   const instagram = document.getElementById("new-ig").value;
-  const neighborhoodId = parseInt(document.getElementById("new-neighborhoods").value);
+  const neighborhoodId = parseInt(document.getElementById("new-neighborhood").value);
 
   submitNewForm(name, phone, website, instagram, neighborhoodId);
 

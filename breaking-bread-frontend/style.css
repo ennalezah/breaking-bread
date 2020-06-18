@@ -19,12 +19,18 @@ footer {
   height: 50vh;
 }
 
-div.card {
-  background-color: #eeeeee;
-  height: 250px;
-  width: 300px;
-  box-shadow: 10px 10px grey;
-  padding: 10px;
-  border-radius: 10px;
+.neighborhood-name {
+  color: #a3a58e;
+  /* color: #354138; */
 }
 
+.btn-warning {
+  background-color: #f5c793;
+  border-color: #f5c793;
+}
+
+.btn-warning:hover, .btn-warning:active, .btn-warning:focus {
+  /* background-color: #f5c793; */
+  background-color: rgba(238, 162, 75, 0.9);
+  border-color: rgba(245, 199, 147,0.5);
+}
