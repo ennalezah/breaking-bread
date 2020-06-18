@@ -19,6 +19,12 @@ footer {
   height: 50vh;
 }
 
+.city-neighborhoods {
+  overflow: auto;
+  width: 100%;
+  height: 800px;
+}
+
 .neighborhood-name {
   color: #a3a58e;
   /* color: #354138; */
