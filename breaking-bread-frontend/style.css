@@ -6,8 +6,7 @@ footer {
   height: 25vh;
 }
 
-
-.display-4 {
+.display-1 {
   color: #705d5c;
 }
 
@@ -19,3 +18,13 @@ footer {
   background-size: cover;
   height: 50vh;
 }
+
+div.card {
+  background-color: #eeeeee;
+  height: 250px;
+  width: 300px;
+  box-shadow: 10px 10px grey;
+  padding: 10px;
+  border-radius: 10px;
+}
+

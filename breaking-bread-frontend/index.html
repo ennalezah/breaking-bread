@@ -11,28 +11,31 @@
   </head>
   <body>
     
-    <div class="jumbotron jumbotron-fluid">
+    <div class="jumbotron jumbotron-fluid py-5 mb-5">
       <div class="container">
-        <div align="center">
+        <div align="center" class="">
           <p><img src="images/breaking-bread-logo-25.png"></p>
-          <h1 class="display-4">BREAKING BREAD</h1>
+          <h1 class="display-1"><strong>BREAKING BREAD</strong></h1>
           <br>
           <p class="lead">A community-contributed resource for finding & supporting Black-owned restaurants in Los Angeles</p>
-          <!-- <hr class="my-4"> -->
-          
+          <!-- <hr class="my-4"> -->          
         </div>
       </div>
     </div>
 
-    <div class="container">
-      <section id="black-owned-businesses" class="py-5">
+    
+      <section id="black-owned-businesses" class="container py-5 ">
+        <h3>Neighborhoods</h3>
+        
+        
         
       </section>    
   
-      <section id="new-business" class="py-5">
-        <h1>Did we forget to add a business?</h1>
-        <p>Complete the form below. All fields must be filled out. If info is unavailable for a field, <strong>please enter N/A.</strong></p>
-        <p>To suggest an edit for a business that is already listed, please send it <a href="mailto:hae.villareal@gmail.com?subject=Breaking Bread: Suggest an edit">here.</a></p>
+      <section id="new-business" class="container py-5">
+        <h3 align="center">Did we forget to add a business?</h3>
+        <p align="center">Complete the form below. All fields must be filled out. If info is unavailable for a field, <strong>please enter N/A.</strong><br>
+        To suggest an edit for a business that is already listed, please send it <a href="mailto:hae.villareal@gmail.com?subject=Breaking Bread: Suggest an edit">here.</a></p>
+        <br>
   
         <form id="new-business-form" action="http://localhost:3000/api/v1/businesses" method="POST">
           <label> Business Name: <input type="text" name="name" id="new-name" required /></label><br />
@@ -52,9 +55,7 @@
           Breaking Bread by Hazel Anne Villareal
         </div>
       </footer>
-      
-    </div>    
-
+    
     <script src="./src/js/index.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>

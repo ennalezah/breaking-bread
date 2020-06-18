@@ -63,7 +63,7 @@ function renderNeighborhood(neighborhood) {
 
   neighborhoodContainer.dataset.neighborhoodId = `${neighborhood.id}`;
 
-  neighborhoodContainer.innerHTML += `<h3 class="neighborhood-name">${neighborhood.name}</h3><ul data-neighborhood-businesses="${neighborhood.id}"></ul>`
+  neighborhoodContainer.innerHTML += `<h3 class="neighborhood-name">${neighborhood.name}</h3><ul class="list-unstyled" data-neighborhood-businesses="${neighborhood.id}"></ul>`
 
   neighborhoods.appendChild(neighborhoodContainer);   
 }
