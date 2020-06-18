@@ -10,13 +10,18 @@
 
   </head>
   <body>
+    
     <div class="jumbotron jumbotron-fluid">
       <div class="container">
-        <h1 class="display-4">BREAKING BREAD</h1>
-        <p class="lead">Your resource for finding and supporting Black-owned restaurants in Los Angeles</p>
-        <!-- <hr class="my-4">
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p> -->
-      </div>      
+        <div align="center">
+          <p><img src="images/breaking-bread-logo-25.png"></p>
+          <h1 class="display-4">BREAKING BREAD</h1>
+          <br>
+          <p class="lead">A community-contributed resource for finding & supporting Black-owned restaurants in Los Angeles</p>
+          <!-- <hr class="my-4"> -->
+          
+        </div>
+      </div>
     </div>
 
     <div class="container">
@@ -25,9 +30,9 @@
       </section>    
   
       <section id="new-business" class="py-5">
-        <h1>Are we missing one?</h1>
+        <h1>Did we forget to add a business?</h1>
         <p>Complete the form below. All fields must be filled out. If info is unavailable for a field, <strong>please enter N/A.</strong></p>
-        <p>To suggest an edit for a business that is already listed, please send it <a href="mailto: hae.villareal@gmail.com">here.</a></p>
+        <p>To suggest an edit for a business that is already listed, please send it <a href="mailto:hae.villareal@gmail.com?subject=Breaking Bread: Suggest an edit">here.</a></p>
   
         <form id="new-business-form" action="http://localhost:3000/api/v1/businesses" method="POST">
           <label> Business Name: <input type="text" name="name" id="new-name" required /></label><br />
@@ -42,11 +47,11 @@
         </form>
       </section>
 
-      <section>
-        <footer>
+      <footer class="py-5">
+        <div align="center">
           Breaking Bread by Hazel Anne Villareal
-        </footer>
-      </section>
+        </div>
+      </footer>
       
     </div>    
 

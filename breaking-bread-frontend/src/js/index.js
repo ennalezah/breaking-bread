@@ -36,8 +36,9 @@ function renderCity(city) {
   let citySection = document.querySelector("#black-owned-businesses");
 
   citySection.dataset.cityId = `${city.id}`
-  citySection.innerHTML += `<h1 class="city-name">${city.name}</h1>
-  <div class="neighborhoods"></div>`
+  // citySection.innerHTML += `<h1 class="city-name">${city.name}</h1>
+  // <div class="neighborhoods"></div>`
+  citySection.innerHTML += `<div class="city-neighborhoods"></div>`
 
   city.neighborhoods.forEach(neighborhood => renderNeighborhood(neighborhood));
 }
@@ -54,7 +55,7 @@ function fetchNeighborhoods() {
 function renderNeighborhood(neighborhood) {
   addNeighborhoodstoNewForm(neighborhood);
 
-  const neighborhoods = document.querySelector(".neighborhoods");  
+  const neighborhoods = document.querySelector(".city-neighborhoods");  
 
   const neighborhoodContainer = document.createElement("div");
 
