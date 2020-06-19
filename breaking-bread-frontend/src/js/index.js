@@ -43,7 +43,9 @@ function fetchNeighborhoods() {
 function renderNeighborhood(neighborhood) {
   addNeighborhoodstoNewForm(neighborhood);
 
-  const neighborhoods = document.querySelector(".city-neighborhoods");  
+  const neighborhoods = document.querySelector(".city-neighborhoods");
+  
+  // neighborhoods.innerHTML += '<div class="row"></div>'
 
   const neighborhoodContainer = document.createElement("div");
 
@@ -51,7 +53,7 @@ function renderNeighborhood(neighborhood) {
 
   neighborhoodContainer.dataset.neighborhoodId = `${neighborhood.id}`;
 
-  neighborhoodContainer.innerHTML += `<h4 class="neighborhood-name">${neighborhood.name}</h4><ul class="list-unstyled" data-neighborhood-businesses="${neighborhood.id}"></ul>`
+  neighborhoodContainer.innerHTML += `<h4 class="neighborhood-name">${neighborhood.name}</h4><ul class="list-unstyled" data-neighborhood-businesses="${neighborhood.id}"></ul><hr class="my-4">`
 
   neighborhoods.appendChild(neighborhoodContainer);   
 }
