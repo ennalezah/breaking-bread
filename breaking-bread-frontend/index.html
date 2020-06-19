@@ -7,64 +7,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@700&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+
+
 
   </head>
   <body>
-    
-    <div class="jumbotron jumbotron-fluid py-5 mb-1">
+    <section id="hero py-5">
       <div class="container">
-        <div align="center" class="">
-          <p><img src="images/breaking-bread-logo-25.png"></p>
-          <h1 class="display-1"><strong>BREAKING BREAD</strong></h1>
-          <br>
+        <div align="center">
+          <img src="images/hero-banner-logo.png" style="width: 50%;">
+          <h1 id="logo-name"><strong>BREAKING BREAD</strong></h1>
           <p class="lead">A community-contributed resource for finding & supporting Black-owned restaurants in Los Angeles</p>
-          <!-- <hr class="my-4"> -->          
         </div>
       </div>
-    </div>
+    </section>
 
     
       <section id="black-owned-businesses" class="container py-5 mb-2">       
-        
       </section>    
   
       <section id="new-business" class="container py-5">
-        <h2 align="center">Don't see your favorite Black-owned restaurant listed?</h2>
-        <p align="center">Complete the form below. All fields must be filled out. If info is unavailable for a field, <strong>please enter N/A.</strong><br>
-        To suggest an edit for a business that is already listed, please send it <a href="mailto:hae.villareal@gmail.com?subject=Breaking Bread: Suggest an edit">here.</a></p>
-        <br>
-  
-        <form id="new-business-form" action="http://localhost:3000/api/v1/businesses" method="POST">
-          <div class="form-group">
-            <label for="new-name">Business Name:</label>
-            <input type="text" name="name" id="new-name" class="form-control" required />
-          </div>
+        <div class="container">
+          <h2 align="center" class="text-uppercase">Don't see your favorite Black-owned restaurant listed?</h2>
+          <p align="center">Complete the form below. All fields must be filled out. If info is unavailable for a field, <strong>please enter N/A.</strong><br>
+          To suggest an edit for a business that is already listed, please send it <a href="mailto:hae.villareal@gmail.com?subject=Breaking Bread: Suggest an edit">here.</a></p>
+          <br>
+    
+          <form id="new-business-form" action="http://localhost:3000/api/v1/businesses" method="POST">
+            <div class="form-group">
+              <label for="new-name">Business Name:</label>
+              <input type="text" name="name" id="new-name" class="form-control" required />
+            </div>
 
-          <div class="form-group">
-            <label for="new-phone">Phone:</label>
-            <input type="text" name="phone" id="new-phone" placeholder="310-555-1234" class="form-control" required />
-          </div>
+            <div class="form-group">
+              <label for="new-phone">Phone:</label>
+              <input type="text" name="phone" id="new-phone" placeholder="310-555-1234" class="form-control" required />
+            </div>
 
-          <div class="form-group">
-            <label for="new-website">Website or Yelp Link:</label>
-            <input type="text" name="website" id="new-website" class="form-control" placeholder="https://www.thisisanexample.com/" required />
-          </div>
+            <div class="form-group">
+              <label for="new-website">Website or Yelp Link:</label>
+              <input type="text" name="website" id="new-website" class="form-control" placeholder="https://www.thisisanexample.com/" required />
+            </div>
 
-          <div class="form-group">
-            <label for="new-instagram">Instagram:</label>
-            <input type="text" name="ig" id="new-ig" class="form-control" placeholder="@businessinstahandle"required />
-          </div>
+            <div class="form-group">
+              <label for="new-instagram">Instagram:</label>
+              <input type="text" name="ig" id="new-ig" class="form-control" placeholder="@businessinstahandle"required />
+            </div>
 
-          <div class="form-group">
-            <label for="new-neighborhood"> Neighborhood:</label>
-            <select class="form-control" id="new-neighborhood" name="neighborhood">
-              <option selected disabled value="">Select one</option>
-            </select>
-          </div>      
-          
-          <!-- <label> Neighborhood: <input type="text" name="neighborhood" id="new-neighborhood" required /></label><br /> -->
-          <button type="submit" class="btn btn-warning" value="Submit" />Submit</button>
-        </form>
+            <div class="form-group">
+              <label for="new-neighborhood"> Neighborhood:</label>
+              <select class="form-control" id="new-neighborhood" name="neighborhood">
+                <option selected disabled value="">Select one</option>
+              </select>
+            </div>      
+            
+            <!-- <label> Neighborhood: <input type="text" name="neighborhood" id="new-neighborhood" required /></label><br /> -->
+            <button type="submit" class="btn btn-warning" value="Submit" />Submit</button>
+          </form>
+        </div>
       </section>
 
       <footer class="py-5">

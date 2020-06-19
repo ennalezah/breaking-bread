@@ -26,7 +26,7 @@ function renderCity(city) {
   citySection.dataset.cityId = `${city.id}`
   // citySection.innerHTML += `<h1 class="city-name">${city.name}</h1>
   // <div class="neighborhoods"></div>`
-  citySection.innerHTML += `<div class="city-neighborhoods"></div>`
+  citySection.innerHTML += `<div class="city-neighborhoods" align="center"></div>`
 
   city.neighborhoods.forEach(neighborhood => renderNeighborhood(neighborhood));
 }
@@ -53,7 +53,7 @@ function renderNeighborhood(neighborhood) {
 
   neighborhoodContainer.dataset.neighborhoodId = `${neighborhood.id}`;
 
-  neighborhoodContainer.innerHTML += `<h4 class="neighborhood-name">${neighborhood.name}</h4><ul class="list-unstyled" data-neighborhood-businesses="${neighborhood.id}"></ul><hr class="my-4">`
+  neighborhoodContainer.innerHTML += `<h4 class="neighborhood-name text-uppercase">${neighborhood.name}</h4><ul class="list-unstyled" data-neighborhood-businesses="${neighborhood.id}"></ul><hr class="my-4">`
 
   neighborhoods.appendChild(neighborhoodContainer);   
 }
@@ -80,6 +80,7 @@ function renderBusiness(business) {
   let li = document.createElement("li");
 
   li.dataset.businessId = business.id;
+  li.className = "text-justify"
 
   li.innerHTML += `<br><strong>${business.name}</strong><br>Ph: ${business.phone}<br>IG: ${business.instagram}<br><a href="${business.website}" target="_blank">Go to website</a>`;
 
