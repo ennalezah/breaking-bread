@@ -16,9 +16,9 @@ la = City.create(name: 'Los Angeles', abbrev: 'LA')
 
 la.neighborhoods.create([
   { name: 'Alhambra' },
-  # { name: 'Altadena' },
+  { name: 'Altadena' },
   { name: 'Anaheim' },
-  # { name: 'Atwater Village' },
+  { name: 'Atwater Village' },
   { name: 'Azusa' },
   { name: 'Baldwin Hills' },
   { name: 'Bellflower' },
@@ -128,7 +128,33 @@ atwaterVillage = Neighborhood.find_by(name: "Atwater Village");
 atwaterVillage.businesses.create(name: "Chicken N Chips", phone: "(323) 922-1070", website: "https://chickennchips.com/", instagram: "@chickennchips")
 
 
-azusa = Neighborhood.find_by(name: "Azusa");
+azusa = Neighborhood.find_by(name: "Azusa")
 azusa.businesses.create(name: "Keith's Kettle Corn", phone: "(626) 804-7999", website: "https://www.keithskettlecorn.com/", instagram: "@keithskettlecorn")
 
-# Business.import_from_csv
+
+carson = Neighborhood.find_by(name: "Carson")
+carson.businesses.create([{
+    name: "Juice-C-Juice",
+    phone: "(310) 324-8444",
+    website: "https://www.gotjuices.com/",
+    instagram: "@juicecjuice"
+  },
+  {
+    name: "Ken's Ice Cream",
+    phone: "(310) 324-7704",
+    website: "http://kensicecream.net/",
+    instagram: "@kensparlor"
+  },
+  {
+    name: "M&M Soul Food",
+    phone: "(310) 324-5317",
+    website: "https://www.yelp.com/biz/m-and-m-soul-food-carson-2",
+    instagram: "N/A"
+  },
+  {
+    name: "R & R Soul Food Restaurant",
+    phone: "(310) 715-6716",
+    website: "https://www.randrsoulfood.com/",
+    instagram: "@randrsoulfoods"
+  }
+])
