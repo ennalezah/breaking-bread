@@ -41,7 +41,7 @@ function fetchNeighborhoods() {
 }
 
 function renderNeighborhood(neighborhood) {
-  addNeighborhoodstoNewForm(neighborhood);
+  addNeighborhoodtoNewForm(neighborhood);
 
   const neighborhoods = document.querySelector(".city-neighborhoods");
 
@@ -56,7 +56,7 @@ function renderNeighborhood(neighborhood) {
   neighborhoods.appendChild(neighborhoodContainer);   
 }
 
-function addNeighborhoodstoNewForm(neighborhood) {
+function addNeighborhoodtoNewForm(neighborhood) {
   const dropdown = document.querySelector("select#new-neighborhood");
 
   const option = `<option value="${neighborhood.id}">${neighborhood.name}</option>`
@@ -71,14 +71,7 @@ function fetchBusinesses() {
     .then(resp => resp.json())
     .then(businesses => {
       businesses.forEach(business => {
-        // let newBusiness = new Business(business);
-        // debugger
         renderBusinessToNeighborhood(business);
-
-
-        // let ul = document.querySelector(`[data-neighborhood-businesses="${newBusiness.neighborhood.id}"]`);
-
-        // ul.innerHTML += newBusiness.renderBusiness();
       })
     })
     // json.forEach(obj => renderBusiness(obj)))
@@ -117,14 +110,7 @@ function submitNewForm(name, phone, website, instagram, neighborhood_id) {
 
   fetch(businessesUrl, configObj)
     .then(resp => resp.json())
-    .then(business => {
-      console.log(json)
-      let newBusiness = new Business(business);
-      
-      // let ul = document.querySelector(`[data-neighborhood-businesses="${business.neighborhood.id}"]`);
-
-      // ul.innerHTML += newBusiness.renderBusiness();
-    })
+    .then(business => renderBusinessToNeighborhood(business))
 }
 
 function newFormHandler(e) {
@@ -140,7 +126,7 @@ function newFormHandler(e) {
 
   document.getElementById("new-business-form").reset();
 
-  alert(`${name} in ${neighborhood} has been added. Thank you!`);
+  alert(`${name} has been added. Thank you!`);
 }
 
 

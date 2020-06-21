@@ -12,10 +12,10 @@ class Business {
 
    renderBusiness() {  
       return `<li class="text-justify my-4" data-business-id=${this.id} style="width: 300px">
-         <strong>${this.name}</strong><br>
+         <span style="font-weight: 600">${this.name}</span><br>
          Ph: ${this.phone}<br>
          IG: ${this.instagram}<br>
-         <a href="${this.website}" target="_blank">Go to website</a>
+         <a href="${this.website}" target="_blank">>> Go to website</a>
       </li>`
    }
 }
