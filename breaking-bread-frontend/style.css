@@ -1,6 +1,7 @@
 body {
   background-color: #F8F7F3;
-  /* background-image: url("https://www.transparenttextures.com/patterns/old-wall.png"); */
+  font-family: 'Inconsolata', monospace;
+  font-weight: 300;
 }
 
 
@@ -15,7 +16,7 @@ h1, h2 {
 }
 
 #logo-name {
-  font-size: 4.5em;
+  font-size: 5em;
 }
 
 #hero {
@@ -71,5 +72,5 @@ h1, h2 {
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {  
-  #logo-name {font-size: 4em;}
+  #logo-name {font-size: 5em;}
 }
