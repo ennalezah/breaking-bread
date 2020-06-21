@@ -3,6 +3,7 @@ body {
   /* background-image: url("https://www.transparenttextures.com/patterns/old-wall.png"); */
 }
 
+
 footer {
   height: 15vh;
 }
@@ -10,6 +11,7 @@ footer {
 h1, h2 {
   font-family: 'Oswald', sans-serif;
   color: #705d5c;
+  letter-spacing: 0.1em;
 }
 
 #logo-name {
@@ -39,9 +41,11 @@ h1, h2 {
 }
 
 .neighborhood-name {
-  /* color: #a3a58e; */
   /* color: #a6a971; */
+  font-family: 'Oswald', sans-serif;
   color: #354138;
+  font-weight: bold;
+  letter-spacing: 0.25em;
 }
 
 .btn-warning {

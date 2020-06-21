@@ -11,26 +11,13 @@ class Business {
    }
 
    renderBusiness() {  
-      // const ul = document.querySelector(`[data-neighborhood-businesses="${this.neighborhood}"]`);
-      
-      // let li = document.createElement("li");
-      
-      // li.dataset.businessId = this.id;
-      // li.className = "text-justify"
-      
-      // li.innerHTML += `<br><strong>${this.name}</strong><br>Ph: ${this.phone}<br>IG: ${this.instagram}<br><a href="${this.website}" target="_blank">Go to website</a>`;
-      // debugger
-
-      return `<li class="text-justify" data-business-id=${this.id}>
+      return `<li class="text-justify my-4" data-business-id=${this.id} style="width: 300px">
          <strong>${this.name}</strong><br>
          Ph: ${this.phone}<br>
          IG: ${this.instagram}<br>
          <a href="${this.website}" target="_blank">Go to website</a>
-      </li><br>`
+      </li>`
    }
-
-
-
 }
 
 Business.all = [];

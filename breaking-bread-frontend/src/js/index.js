@@ -44,8 +44,6 @@ function renderNeighborhood(neighborhood) {
   addNeighborhoodstoNewForm(neighborhood);
 
   const neighborhoods = document.querySelector(".city-neighborhoods");
-  
-  // neighborhoods.innerHTML += '<div class="row"></div>'
 
   const neighborhoodContainer = document.createElement("div");
 
@@ -53,7 +51,7 @@ function renderNeighborhood(neighborhood) {
 
   neighborhoodContainer.dataset.neighborhoodId = `${neighborhood.id}`;
 
-  neighborhoodContainer.innerHTML += `<h4 class="neighborhood-name text-uppercase">${neighborhood.name}</h4><ul class="list-unstyled" data-neighborhood-businesses="${neighborhood.id}"></ul><hr class="my-4">`
+  neighborhoodContainer.innerHTML += `<h4 class="neighborhood-name text-uppercase mb-4">${neighborhood.name}</h4><ul class="list-unstyled" data-neighborhood-businesses="${neighborhood.id}"></ul><hr class="my-4">`
 
   neighborhoods.appendChild(neighborhoodContainer);   
 }
@@ -73,14 +71,23 @@ function fetchBusinesses() {
     .then(resp => resp.json())
     .then(businesses => {
       businesses.forEach(business => {
-        let newBusiness = new Business(business);
+        // let newBusiness = new Business(business);
+        // debugger
+        renderBusinessToNeighborhood(business);
 
-        let ul = document.querySelector(`[data-neighborhood-businesses="${business.neighborhood.id}"]`);
-        
-        ul.innerHTML += newBusiness.renderBusiness();
+
+        // let ul = document.querySelector(`[data-neighborhood-businesses="${newBusiness.neighborhood.id}"]`);
+
+        // ul.innerHTML += newBusiness.renderBusiness();
       })
     })
     // json.forEach(obj => renderBusiness(obj)))
+}
+
+function renderBusinessToNeighborhood(business) {
+  let newBusiness = new Business(business);
+  let ul = document.querySelector(`[data-neighborhood-businesses="${newBusiness.neighborhood}"]`);
+  ul.innerHTML += newBusiness.renderBusiness();
 }
 
 // function renderBusiness(business) {  
@@ -110,7 +117,14 @@ function submitNewForm(name, phone, website, instagram, neighborhood_id) {
 
   fetch(businessesUrl, configObj)
     .then(resp => resp.json())
-    .then(json => renderBusiness(json))
+    .then(business => {
+      console.log(json)
+      let newBusiness = new Business(business);
+      
+      // let ul = document.querySelector(`[data-neighborhood-businesses="${business.neighborhood.id}"]`);
+
+      // ul.innerHTML += newBusiness.renderBusiness();
+    })
 }
 
 function newFormHandler(e) {
@@ -126,12 +140,7 @@ function newFormHandler(e) {
 
   document.getElementById("new-business-form").reset();
 
-  alert("Thank you for adding to the list!");
-  // name.value = '';
-  // phone.value = '';
-  // website.value = '';
-  // instagram.value = '';
-  // neighborhoodId.value = '';  
+  alert(`${name} in ${neighborhood} has been added. Thank you!`);
 }
 
 
