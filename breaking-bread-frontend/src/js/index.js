@@ -20,16 +20,16 @@ function fetchCities() {
     .then(json => json.forEach(obj => renderCity(obj))) 
 }
 
-// function renderCity(city) {
-//   let citySection = document.querySelector("#black-owned-businesses");
+function renderCity(city) {
+  let citySection = document.querySelector("#black-owned-businesses");
 
-//   citySection.dataset.cityId = `${city.id}`
-//   // citySection.innerHTML += `<h1 class="city-name">${city.name}</h1>
-//   // <div class="neighborhoods"></div>`
-//   citySection.innerHTML += `<div class="city-neighborhoods" align="center"></div>`
+  citySection.dataset.cityId = `${city.id}`
+  // citySection.innerHTML += `<h1 class="city-name">${city.name}</h1>
+  // <div class="neighborhoods"></div>`
+  citySection.innerHTML += `<div class="city-neighborhoods" align="center"></div>`
 
-//   city.neighborhoods.forEach(neighborhood => renderNeighborhood(neighborhood));
-// }
+  city.neighborhoods.forEach(neighborhood => renderNeighborhood(neighborhood));
+}
 
 
 /****** NEIGHBORHOOD ******/
@@ -74,24 +74,27 @@ function fetchBusinesses() {
     .then(businesses => {
       businesses.forEach(business => {
         let newBusiness = new Business(business);
-        renderBusiness(business);
+
+        let ul = document.querySelector(`[data-neighborhood-businesses="${business.neighborhood.id}"]`);
+        
+        ul.innerHTML += newBusiness.renderBusiness();
       })
     })
     // json.forEach(obj => renderBusiness(obj)))
 }
 
-function renderBusiness(business) {  
-  const ul = document.querySelector(`[data-neighborhood-businesses="${business.neighborhood.id}"]`);
+// function renderBusiness(business) {  
+//   const ul = document.querySelector(`[data-neighborhood-businesses="${business.neighborhood.id}"]`);
 
-  let li = document.createElement("li");
+//   let li = document.createElement("li");
 
-  li.dataset.businessId = business.id;
-  li.className = "text-justify"
+//   li.dataset.businessId = business.id;
+//   li.className = "text-justify"
 
-  li.innerHTML += `<br><strong>${business.name}</strong><br>Ph: ${business.phone}<br>IG: ${business.instagram}<br><a href="${business.website}" target="_blank">Go to website</a>`;
+//   li.innerHTML += `<br><strong>${business.name}</strong><br>Ph: ${business.phone}<br>IG: ${business.instagram}<br><a href="${business.website}" target="_blank">Go to website</a>`;
 
-  ul.appendChild(li);
-}
+//   ul.appendChild(li);
+// }
 
 function submitNewForm(name, phone, website, instagram, neighborhood_id) {
   let businessData = {name, phone, website, instagram, neighborhood_id};
