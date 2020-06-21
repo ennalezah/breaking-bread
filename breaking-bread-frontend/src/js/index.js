@@ -20,16 +20,16 @@ function fetchCities() {
     .then(json => json.forEach(obj => renderCity(obj))) 
 }
 
-function renderCity(city) {
-  let citySection = document.querySelector("#black-owned-businesses");
+// function renderCity(city) {
+//   let citySection = document.querySelector("#black-owned-businesses");
 
-  citySection.dataset.cityId = `${city.id}`
-  // citySection.innerHTML += `<h1 class="city-name">${city.name}</h1>
-  // <div class="neighborhoods"></div>`
-  citySection.innerHTML += `<div class="city-neighborhoods" align="center"></div>`
+//   citySection.dataset.cityId = `${city.id}`
+//   // citySection.innerHTML += `<h1 class="city-name">${city.name}</h1>
+//   // <div class="neighborhoods"></div>`
+//   citySection.innerHTML += `<div class="city-neighborhoods" align="center"></div>`
 
-  city.neighborhoods.forEach(neighborhood => renderNeighborhood(neighborhood));
-}
+//   city.neighborhoods.forEach(neighborhood => renderNeighborhood(neighborhood));
+// }
 
 
 /****** NEIGHBORHOOD ******/
@@ -71,7 +71,13 @@ function addNeighborhoodstoNewForm(neighborhood) {
 function fetchBusinesses() {
   fetch(businessesUrl)
     .then(resp => resp.json())
-    .then(json => json.forEach(obj => renderBusiness(obj)))
+    .then(businesses => {
+      businesses.forEach(business => {
+        let newBusiness = new Business(business);
+        renderBusiness(business);
+      })
+    })
+    // json.forEach(obj => renderBusiness(obj)))
 }
 
 function renderBusiness(business) {  
