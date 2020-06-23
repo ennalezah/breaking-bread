@@ -18,6 +18,13 @@ class Business {
          <a href="${this.website}" target="_blank">>> Go to website</a>
       </li>`
    }
+
+   renderBusinessToNeighborhood() {
+      let newBusiness = new Business(this);
+      debugger
+      let ul = document.querySelector(`[data-neighborhood-businesses="${newBusiness.neighborhood}"]`);
+      ul.innerHTML += newBusiness.renderBusiness();
+   }
 }
 
 Business.all = [];
