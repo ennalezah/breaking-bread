@@ -36,7 +36,12 @@ function renderCity(city) {
 function fetchNeighborhoods() {
   fetch(neighborhoodsUrl)
     .then(resp => resp.json())
-    .then(json => console.log(json)) 
+    .then(neighborhoods => {
+      neighborhoods.forEach(neighborhood => {
+        let newNeighborhood = new Neighborhood(neighborhood);
+        debugger
+      })
+    }) 
     // .then(json => json.forEach(obj => renderNeighborhood(obj))) 
 }
 
@@ -76,7 +81,6 @@ function fetchBusinesses() {
         newBusiness.addBusinessToNeighborhood();
       })
     })
-    // json.forEach(obj => renderBusiness(obj)))
 }
 
 // function renderBusinessToNeighborhood(business) {

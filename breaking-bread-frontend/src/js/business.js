@@ -6,8 +6,8 @@ class Business {
       this.website = business.website;
       this.instagram = business.instagram;
       this.neighborhood = business.neighborhood.id;
-      // debugger
       Business.all.push(this);
+      // debugger
    }
 
    renderBusiness() { 
