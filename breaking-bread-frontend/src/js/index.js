@@ -70,18 +70,19 @@ function fetchBusinesses() {
   fetch(businessesUrl)
     .then(resp => resp.json())
     .then(businesses => {
+      console.log(businesses)
       businesses.forEach(business => {
-        business.renderBusinessToNeighborhood();
+        renderBusinessToNeighborhood(business);
       })
     })
     // json.forEach(obj => renderBusiness(obj)))
 }
 
-// function renderBusinessToNeighborhood(business) {
-//   let newBusiness = new Business(business);
-//   let ul = document.querySelector(`[data-neighborhood-businesses="${newBusiness.neighborhood}"]`);
-//   ul.innerHTML += newBusiness.renderBusiness();
-// }
+function renderBusinessToNeighborhood(business) {
+  let newBusiness = new Business(business);
+  let ul = document.querySelector(`[data-neighborhood-businesses="${newBusiness.neighborhood}"]`);
+  ul.innerHTML += newBusiness.renderBusiness();
+}
 
 // function renderBusiness(business) {  
 //   const ul = document.querySelector(`[data-neighborhood-businesses="${business.neighborhood.id}"]`);
@@ -110,7 +111,7 @@ function submitNewForm(name, phone, website, instagram, neighborhood_id) {
 
   fetch(businessesUrl, configObj)
     .then(resp => resp.json())
-    .then(business => business.renderBusinessToNeighborhood())
+    .then(business => renderBusinessToNeighborhood(business))
 }
 
 function newFormHandler(e) {

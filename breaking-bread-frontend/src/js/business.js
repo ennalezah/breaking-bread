@@ -10,18 +10,24 @@ class Business {
       Business.all.push(this);
    }
 
-   renderBusiness() {  
-      return `<li class="text-justify my-4" data-business-id=${this.id} style="width: 300px">
+   renderBusiness() { 
+      if (this.website == "N/A") {
+         return `<li class="text-justify my-4" data-business-id=${this.id} style="width: 300px">
          <span style="font-weight: 600">${this.name}</span><br>
          Ph: ${this.phone}<br>
-         IG: ${this.instagram}<br>
-         <a href="${this.website}" target="_blank">>> Go to website</a>
-      </li>`
+         IG: ${this.instagram}</li>`
+      } else {
+         return `<li class="text-justify my-4" data-business-id=${this.id} style="width: 300px">
+         <span style="font-weight: 600">${this.name}</span><br>
+         Ph: ${this.phone}<br>
+         IG: ${this.instagram}<br>         
+         <a href="${this.website}" target="_blank">>> Go to website</a></li>`
+      }      
    }
 
    renderBusinessToNeighborhood() {
       let newBusiness = new Business(this);
-      debugger
+      // debugger
       let ul = document.querySelector(`[data-neighborhood-businesses="${newBusiness.neighborhood}"]`);
       ul.innerHTML += newBusiness.renderBusiness();
    }

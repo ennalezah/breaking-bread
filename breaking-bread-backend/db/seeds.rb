@@ -16,7 +16,7 @@ la = City.create(name: 'Los Angeles', abbrev: 'LA')
 
 la.neighborhoods.create([
   { name: 'Alhambra' },
-  { name: 'Altadena' },
+  { name: 'Altadena' }, 
   { name: 'Anaheim' },
   { name: 'Atwater Village' },
   { name: 'Azusa' },
@@ -29,8 +29,8 @@ la.neighborhoods.create([
   # { name: 'Chatsworth' },
   { name: 'Compton' },
   # { name: 'Corona' },
-  { name: 'Covina' },
-  { name: 'Crenshaw' },
+  # { name: 'Covina' },
+  # { name: 'Crenshaw' },
   { name: 'Culver City' },
   { name: 'Downtown' },
   { name: 'Historic Filipinotown' },
@@ -42,7 +42,7 @@ la.neighborhoods.create([
   # { name: 'Gramercy Park' },
   { name: 'Hawthorne' },
   { name: 'Hollywood' },
-  { name: 'Huntington Beach' },
+  # { name: 'Huntington Beach' },
   # { name: 'Huntington Park' },
   # { name: 'Hyde Park' },
   { name: 'Inglewood' },
@@ -60,17 +60,17 @@ la.neighborhoods.create([
   { name: 'Mid-Wilshire' },
   # { name: 'Morningside Park' },
   { name: 'North Hollywood' },
-  { name: 'Palmdale' },
-  { name: 'Paramount' },
+  # { name: 'Palmdale' },
+  # { name: 'Paramount' },
   # { name: 'Park-Windsor Hills' },
   { name: 'Pasadena' },
   # { name: 'Playa Vista' },
   { name: 'Pomona' },
   { name: 'Santa Ana' },
   # { name: 'Santa Clarita' },
-  { name: 'Sawtelle' },
+  # { name: 'Sawtelle' },
   { name: 'Sherman Oaks' },
-  { name: 'South Gate' },
+  # { name: 'South Gate' },
   { name: 'South LA' },
   { name: 'Silver Lake' },
   { name: 'Studio City' },
@@ -132,8 +132,86 @@ azusa = Neighborhood.find_by(name: "Azusa")
 azusa.businesses.create(name: "Keith's Kettle Corn", phone: "(626) 804-7999", website: "https://www.keithskettlecorn.com/", instagram: "@keithskettlecorn")
 
 
+baldwinHills = Neighborhood.find_by(name: "Baldwin Hills")
+baldwinHills.businesses.create([{
+    name: "Harun Coffee",
+    phone: "(323) 815-9944",
+    website: "https://harunintl.com/",
+    instagram: "@haruncoffee"
+  },
+  {
+    name: "Hotville Chicken",
+    phone: "(323) 792-4835",
+    website: "https://www.hotvillechicken.com",
+    instagram: "@hotvillechicken"
+  },
+  {
+    name: "Post & Beam",
+    phone: "(323) 299-5599",
+    website: "https://postandbeamla.com/",
+    instagram: "@postandbeamla"
+  },
+  {
+    name: "Southern Girl Desserts",
+    phone: "(323) 293-2253",
+    website: "https://www.southerngirldesserts.com/",
+    instagram: "@southerngirldesserts"
+  },
+  {
+    name: "Yordanos Ethiopian Restaurant",
+    phone: "(323) 921-4215",
+    website: "https://www.yelp.com/biz/yordanos-ethiopian-restaurant-los-angeles",
+    instagram: "@yordanos_ethiopian_resturant"
+  }
+])
+
+
+bellflower = Neighborhood.find_by(name: "Bellflower")
+bellflower.businesses.create(name: "Hambone's Smokehouse", phone: "(562) 920-5200", website: "http://hambonesbarandgrill.com/", instagram: "@hambones_smokehouse")
+
+
+burbank = Neighborhood.find_by(name: "Burbank")
+burbank.businesses.create([{
+    name: "Kings Deli",
+    phone: "(818) 561-4405",
+    website: "https://www.kingsdeli.co/",
+    instagram: "@kingsdelila"
+  },
+  {
+    name: "Lou, The French On The Block",
+    phone: "(747) 241-8205",
+    website: "https://www.louthefrenchontheblock.com/",
+    instagram: "@louthefrenchontheblock"
+  }
+])
+
+
 carson = Neighborhood.find_by(name: "Carson")
 carson.businesses.create([{
+    name: "3Stakx Kitchen",
+    phone: "(323) 474-4429",
+    website: "https://www.3stakxkitchen.com/",
+    instagram: "@3stakxs_kitchen"
+  },
+  {
+    name: "Belly’s Sliders & Wings",
+    phone: "(424) 366-4572",
+    website: "https://www.bellysslidersandwings.com/",
+    instagram: "@bellysslidersandwings"
+  },
+  {
+    name: "Darrow's Grill",
+    phone: "(424) 570-0531",
+    website: "https://www.darrowsneworleansgrill.com/",
+    instagram: "@darrowsgrill"
+  },
+  {
+    name: "Fresh and Meaty Burgers",
+    phone: "(424) 536-3046",
+    website: "https://www.bestturkeyburgerlosangeles.com/",
+    instagram: "@freshandmeatyburgers"
+  },    
+  {
     name: "Juice-C-Juice",
     phone: "(310) 324-8444",
     website: "https://www.gotjuices.com/",
@@ -157,4 +235,44 @@ carson.businesses.create([{
     website: "https://www.randrsoulfood.com/",
     instagram: "@randrsoulfoods"
   }
+])
+
+
+compton = Neighborhood.find_by(name: "Compton")
+compton.businesses.create([{
+    name: "Billionaire Burger Boyz",
+    phone: "(310) 554-4116",
+    website: "https://www.billionaireburgerboyz.com/",
+    instagram: "@billionaireburgerboyz"
+  },
+  {
+    name: "Cliff's Texas Style Burritos",
+    phone: "(310) 609-2755",
+    website: "http://www.cliffsburritos.com/",
+    instagram: "@srcliffsburritos"
+  },
+  {
+    name: "Fish Bone Seafood",
+    phone: "(310) 933-8868",
+    website: "https://fishboneseafood.com/fishbone-seafood-compton/",
+    instagram: "@fishbone_compton"
+  },
+  { 
+    name: "Foster Bros",
+    phone: "(213) 448-1203",
+    website: "N/A",
+    instagram: "@fosterbros_"
+  },
+  {
+    name: "Fun Diggity",
+    phone: "(424) 242-5799",
+    website: "https://fundiggity.business.site/?utm_source=gmb&utm_medium=referral",
+    instagram: "@fdfunnelcakes"
+  }
+    # Happy Ice	Compton	(215) 800-3965	https://happyicela.com/	@happyice
+    # Johnson Brothers BBQ	Compton	(310) 933-8803	https://www.johnsonbrothersbbq.com/	@johnsonbrothersbbq
+    # Patria Coffee	Compton	(323) 513-4865	https://www.patriacoffee.com/	@patriacoffee
+    # Plate Of Hue	Compton	(323) 205-5283	https://www.facebook.com/pg/plateofhue/about/?ref=page_internal	@plateofhue
+    # Smakk'D Refreshers & Teas	Compton	(424) 785-4212	https://www.smakkdrefreshers.com/	@smakkd_
+    # Trap Kitchen	Compton	(503) 442-0748	https://www.trapkitchen.com/	@therealtrapkitchen
 ])
