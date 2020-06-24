@@ -6,7 +6,7 @@ const businessesUrl = "http://localhost:3000/api/v1/businesses"
 document.addEventListener("DOMContentLoaded", onLoad)
 
 function onLoad() {    
-  fetchCities();  
+  fetchCities();
   fetchNeighborhoods();  
   fetchBusinesses();
 
@@ -17,24 +17,40 @@ function onLoad() {
 function fetchCities() {
   fetch(citiesUrl)
     .then(resp => resp.json())
-    .then(cities => {
-      cities.forEach(city => {
+    .then(cities => { 
+      for (const city of cities) {
         let newCity = new City(city);
-        debugger
-      })
+
+        const citySection = document.querySelector("#black-owned-businesses");
+
+        citySection.innerHTML += newCity.renderCity();
+
+        // newCity.neighborhoods.forEach(neighborhood => {
+        //   let newNeighborhood = new Neighborhood(neighborhood);
+        //   newNeighborhood.renderNeighborhood();
+        // })
+      } // end of for...of      
+
+      // cities.forEach(city => {
+      //   let newCity = new City(city);
+      //   // newCity.renderCity();
+      //   newCity.neighborhoods.forEach(neighborhood => {
+      //     neighborhood.loadCityNeighborhoods();
+      //   })
+      // }) // end of cities.forEach
     })
 }
 
-function renderCity(city) {
-  let citySection = document.querySelector("#black-owned-businesses");
+// function renderCity(city) {
+//   let citySection = document.querySelector("#black-owned-businesses");
 
-  citySection.dataset.cityId = `${city.id}`
-  // citySection.innerHTML += `<h1 class="city-name">${city.name}</h1>
-  // <div class="neighborhoods"></div>`
-  citySection.innerHTML += `<div class="city-neighborhoods" align="center"></div>`
+//   citySection.dataset.cityId = `${city.id}`
+//   // citySection.innerHTML += `<h1 class="city-name">${city.name}</h1>
+//   // <div class="neighborhoods"></div>`
+//   citySection.innerHTML += `<div class="city-neighborhoods" align="center"></div>`
 
-  city.neighborhoods.forEach(neighborhood => renderNeighborhood(neighborhood));
-}
+//   city.neighborhoods.forEach(neighborhood => renderNeighborhood(neighborhood));
+// }
 
 
 /****** NEIGHBORHOOD ******/
@@ -44,27 +60,29 @@ function fetchNeighborhoods() {
     .then(neighborhoods => {
       neighborhoods.forEach(neighborhood => {
         let newNeighborhood = new Neighborhood(neighborhood);
+        const neighborhoodsContainer = document.querySelector(".city-neighborhoods");
+
+        neighborhoodsContainer.innerHTML += newNeighborhood.renderNeighborhood();
         // debugger
       })
     }) 
-    // .then(json => json.forEach(obj => renderNeighborhood(obj))) 
 }
 
-function renderNeighborhood(neighborhood) {
-  addNeighborhoodtoNewForm(neighborhood);
+// function renderNeighborhood(neighborhood) {
+//   addNeighborhoodtoNewForm(neighborhood);
 
-  const neighborhoods = document.querySelector(".city-neighborhoods");
+//   const neighborhoods = document.querySelector(".city-neighborhoods");
 
-  const neighborhoodContainer = document.createElement("div");
+//   const neighborhoodContainer = document.createElement("div");
 
-  neighborhoodContainer.className += "neighborhood";
+//   neighborhoodContainer.className += "neighborhood";
 
-  neighborhoodContainer.dataset.neighborhoodId = `${neighborhood.id}`;
+//   neighborhoodContainer.dataset.neighborhoodId = `${neighborhood.id}`;
 
-  neighborhoodContainer.innerHTML += `<h4 class="neighborhood-name text-uppercase mb-4">${neighborhood.name}</h4><ul class="list-unstyled" data-neighborhood-businesses="${neighborhood.id}"></ul><hr class="my-4">`
+//   neighborhoodContainer.innerHTML += `<h4 class="neighborhood-name text-uppercase mb-4">${neighborhood.name}</h4><ul class="list-unstyled" data-neighborhood-businesses="${neighborhood.id}"></ul><hr class="my-4">`
 
-  neighborhoods.appendChild(neighborhoodContainer);   
-}
+//   neighborhoods.appendChild(neighborhoodContainer);   
+// }
 
 function addNeighborhoodtoNewForm(neighborhood) {
   const dropdown = document.querySelector("select#new-neighborhood");
