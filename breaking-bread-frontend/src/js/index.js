@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", onLoad)
 
 function onLoad() {    
   fetchCities();
-  fetchNeighborhoods();  
+  // fetchNeighborhoods();  
   fetchBusinesses();
 
   document.getElementById("new-business-form").addEventListener("submit", newFormHandler);
@@ -28,6 +28,7 @@ function fetchCities() {
         newCity.neighborhoods.forEach(neighborhood => {
           let newNeighborhood = new Neighborhood(neighborhood);
           newNeighborhood.renderNeighborhood();
+          newNeighborhood.addToNewForm();     
         })
       } // end of for...of      
 
@@ -54,17 +55,16 @@ function fetchCities() {
 
 
 /****** NEIGHBORHOOD ******/
-function fetchNeighborhoods() {
-  fetch(neighborhoodsUrl)
-    .then(resp => resp.json())
-    .then(neighborhoods => {
-      neighborhoods.forEach(neighborhood => {
-        let newNeighborhood = new Neighborhood(neighborhood);
-        // newNeighborhood.renderNeighborhood();
-        newNeighborhood.addToNewForm();     
-      })
-    }) 
-}
+// function fetchNeighborhoods() {
+//   fetch(neighborhoodsUrl)
+//     .then(resp => resp.json())
+//     .then(neighborhoods => {
+//       neighborhoods.forEach(neighborhood => {
+//         let newNeighborhood = new Neighborhood(neighborhood);
+//         newNeighborhood.addToNewForm();     
+//       })
+//     }) 
+// }
 
 // function renderNeighborhood(neighborhood) {
 //   addNeighborhoodtoNewForm(neighborhood);
@@ -96,13 +96,9 @@ function fetchBusinesses() {
   fetch(businessesUrl)
     .then(resp => resp.json())
     .then(businesses => {
-      // console.log(businesses)
       businesses.forEach(business => {
         let newBusiness = new Business(business);
         newBusiness.addBusinessToNeighborhood();
-        
-        // const ul = document.querySelector(`[data-neighborhood-businesses="${newBusiness.neighborhood.id}"]`);
-        // ul.innerHTML += newBusiness.renderBusiness();
       })
     })
 }

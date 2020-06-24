@@ -10,8 +10,6 @@ class City {
    renderCity() {    
       return `<div class="city-neighborhoods container" data-city-id="${this.id}" align="center"></div>`
    }
-
-   load
 }
 
 City.all = []
