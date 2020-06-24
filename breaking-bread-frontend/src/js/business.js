@@ -25,11 +25,9 @@ class Business {
       }      
    }
 
-   renderBusinessToNeighborhood() {
-      let newBusiness = new Business(this);
-      // debugger
-      let ul = document.querySelector(`[data-neighborhood-businesses="${newBusiness.neighborhood}"]`);
-      ul.innerHTML += newBusiness.renderBusiness();
+   addBusinessToNeighborhood() {
+      let ul = document.querySelector(`[data-neighborhood-businesses="${this.neighborhood}"]`);
+      ul.innerHTML += this.renderBusiness();
    }
 }
 
