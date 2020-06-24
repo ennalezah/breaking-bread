@@ -5,7 +5,7 @@ class Business {
       this.phone = business.phone;
       this.website = business.website;
       this.instagram = business.instagram;
-      this.neighborhood = business.neighborhood.id;
+      this.neighborhood_id = business.neighborhood.id;
       Business.all.push(this);
       // debugger
    }
@@ -26,7 +26,7 @@ class Business {
    }
 
    addBusinessToNeighborhood() {
-      let ul = document.querySelector(`[data-neighborhood-businesses="${this.neighborhood}"]`);
+      const ul = document.querySelector(`[data-neighborhood-businesses="${this.neighborhood_id}"]`);
       ul.innerHTML += this.renderBusiness();
    }
 }

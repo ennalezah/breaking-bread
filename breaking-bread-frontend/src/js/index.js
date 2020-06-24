@@ -25,10 +25,10 @@ function fetchCities() {
 
         citySection.innerHTML += newCity.renderCity();
 
-        // newCity.neighborhoods.forEach(neighborhood => {
-        //   let newNeighborhood = new Neighborhood(neighborhood);
-        //   newNeighborhood.renderNeighborhood();
-        // })
+        newCity.neighborhoods.forEach(neighborhood => {
+          let newNeighborhood = new Neighborhood(neighborhood);
+          newNeighborhood.renderNeighborhood();
+        })
       } // end of for...of      
 
       // cities.forEach(city => {
@@ -60,10 +60,8 @@ function fetchNeighborhoods() {
     .then(neighborhoods => {
       neighborhoods.forEach(neighborhood => {
         let newNeighborhood = new Neighborhood(neighborhood);
-        const neighborhoodsContainer = document.querySelector(".city-neighborhoods");
-
-        neighborhoodsContainer.innerHTML += newNeighborhood.renderNeighborhood();
-        // debugger
+        // newNeighborhood.renderNeighborhood();
+        newNeighborhood.addToNewForm();     
       })
     }) 
 }
@@ -84,13 +82,13 @@ function fetchNeighborhoods() {
 //   neighborhoods.appendChild(neighborhoodContainer);   
 // }
 
-function addNeighborhoodtoNewForm(neighborhood) {
-  const dropdown = document.querySelector("select#new-neighborhood");
+// function addNeighborhoodtoNewForm(neighborhood) {
+//   const dropdown = document.querySelector("select#new-neighborhood");
 
-  const option = `<option value="${neighborhood.id}">${neighborhood.name}</option>`
+//   const option = `<option value="${neighborhood.id}">${neighborhood.name}</option>`
 
-  dropdown.innerHTML += option;
-}
+//   dropdown.innerHTML += option;
+// }
 
 
 /****** BUSINESS ******/
@@ -98,10 +96,13 @@ function fetchBusinesses() {
   fetch(businessesUrl)
     .then(resp => resp.json())
     .then(businesses => {
-      console.log(businesses)
+      // console.log(businesses)
       businesses.forEach(business => {
         let newBusiness = new Business(business);
         newBusiness.addBusinessToNeighborhood();
+        
+        // const ul = document.querySelector(`[data-neighborhood-businesses="${newBusiness.neighborhood.id}"]`);
+        // ul.innerHTML += newBusiness.renderBusiness();
       })
     })
 }

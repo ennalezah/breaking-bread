@@ -8,9 +8,15 @@ class Neighborhood {
    }
 
    renderNeighborhood() {
-      // addNeighborhoodtoNewForm(neighborhood);
+      const neighborhoodsContainer = document.querySelector(".city-neighborhoods");
 
-      return `<div class="neighborhood" data-neighborhood-id="${this.id}"><h4 class="neighborhood-name text-uppercase mb-4">${this.name}</h4><ul class="list-unstyled" data-neighborhood-businesses="${this.id}"></ul><hr class="my-4"></div>` 
+      neighborhoodsContainer.innerHTML += `<div class="neighborhood" data-neighborhood-id="${this.id}"><h4 class="neighborhood-name text-uppercase mb-4">${this.name}</h4><ul class="list-unstyled" data-neighborhood-businesses="${this.id}"></ul><hr class="my-4"></div>` 
+   }
+
+   addToNewForm() {
+      const dropdown = document.querySelector("select#new-neighborhood");
+
+      dropdown.innerHTML += `<option value="${this.id}">${this.name}</option>`;
    }
 }
 
