@@ -1,11 +1,15 @@
 body {
   background-color: #F8F7F3;
+  background-image: url("https://www.transparenttextures.com/patterns/concrete-wall.png");
   font-family: 'Inconsolata', monospace;
   font-weight: 300;
 }
 
 footer {
   height: 20vh;
+  background-color: #354138;
+  background-image: url("https://www.transparenttextures.com/patterns/concrete-wall.png");
+  color: white;
 }
 
 h1, h2 {
@@ -24,11 +28,7 @@ label {
 
 #hero {
   background-color: #F8F7F3;
-  /* background-image: url("https://www.transparenttextures.com/patterns/old-wall.png"); */
-  /* background-image: url("images/logo.png"); */
-  /* background-position: center; */
-  /* background-repeat: no-repeat; */
-  /* background-size: cover; */
+  background: none;
   height: 50vh;
 }
 
