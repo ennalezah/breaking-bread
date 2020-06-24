@@ -5,6 +5,10 @@ class Neighborhood {
       this.businesses = neighborhood.businesses;
       Neighborhood.all.push(this);
    }
+
+   renderNeighborhood() {
+      
+   }
 }
 
 Neighborhood.all = [];

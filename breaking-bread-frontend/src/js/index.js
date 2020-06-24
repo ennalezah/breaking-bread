@@ -17,7 +17,12 @@ function onLoad() {
 function fetchCities() {
   fetch(citiesUrl)
     .then(resp => resp.json())
-    .then(json => json.forEach(obj => renderCity(obj))) 
+    .then(cities => {
+      cities.forEach(city => {
+        let newCity = new City(city);
+        debugger
+      })
+    })
 }
 
 function renderCity(city) {
@@ -39,7 +44,7 @@ function fetchNeighborhoods() {
     .then(neighborhoods => {
       neighborhoods.forEach(neighborhood => {
         let newNeighborhood = new Neighborhood(neighborhood);
-        debugger
+        // debugger
       })
     }) 
     // .then(json => json.forEach(obj => renderNeighborhood(obj))) 
