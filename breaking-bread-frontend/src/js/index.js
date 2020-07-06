@@ -30,65 +30,9 @@ function fetchCities() {
           newNeighborhood.renderNeighborhood();
           newNeighborhood.addToNewForm();     
         })
-      } // end of for...of      
-
-      // cities.forEach(city => {
-      //   let newCity = new City(city);
-      //   // newCity.renderCity();
-      //   newCity.neighborhoods.forEach(neighborhood => {
-      //     neighborhood.loadCityNeighborhoods();
-      //   })
-      // }) // end of cities.forEach
+      }
     })
 }
-
-// function renderCity(city) {
-//   let citySection = document.querySelector("#black-owned-businesses");
-
-//   citySection.dataset.cityId = `${city.id}`
-//   // citySection.innerHTML += `<h1 class="city-name">${city.name}</h1>
-//   // <div class="neighborhoods"></div>`
-//   citySection.innerHTML += `<div class="city-neighborhoods" align="center"></div>`
-
-//   city.neighborhoods.forEach(neighborhood => renderNeighborhood(neighborhood));
-// }
-
-
-/****** NEIGHBORHOOD ******/
-// function fetchNeighborhoods() {
-//   fetch(neighborhoodsUrl)
-//     .then(resp => resp.json())
-//     .then(neighborhoods => {
-//       neighborhoods.forEach(neighborhood => {
-//         let newNeighborhood = new Neighborhood(neighborhood);
-//         newNeighborhood.addToNewForm();     
-//       })
-//     }) 
-// }
-
-// function renderNeighborhood(neighborhood) {
-//   addNeighborhoodtoNewForm(neighborhood);
-
-//   const neighborhoods = document.querySelector(".city-neighborhoods");
-
-//   const neighborhoodContainer = document.createElement("div");
-
-//   neighborhoodContainer.className += "neighborhood";
-
-//   neighborhoodContainer.dataset.neighborhoodId = `${neighborhood.id}`;
-
-//   neighborhoodContainer.innerHTML += `<h4 class="neighborhood-name text-uppercase mb-4">${neighborhood.name}</h4><ul class="list-unstyled" data-neighborhood-businesses="${neighborhood.id}"></ul><hr class="my-4">`
-
-//   neighborhoods.appendChild(neighborhoodContainer);   
-// }
-
-// function addNeighborhoodtoNewForm(neighborhood) {
-//   const dropdown = document.querySelector("select#new-neighborhood");
-
-//   const option = `<option value="${neighborhood.id}">${neighborhood.name}</option>`
-
-//   dropdown.innerHTML += option;
-// }
 
 
 /****** BUSINESS ******/
@@ -102,25 +46,6 @@ function fetchBusinesses() {
       })
     })
 }
-
-// function renderBusinessToNeighborhood(business) {
-//   let newBusiness = new Business(business);
-//   let ul = document.querySelector(`[data-neighborhood-businesses="${newBusiness.neighborhood}"]`);
-//   ul.innerHTML += newBusiness.renderBusiness();
-// }
-
-// function renderBusiness(business) {  
-//   const ul = document.querySelector(`[data-neighborhood-businesses="${business.neighborhood.id}"]`);
-
-//   let li = document.createElement("li");
-
-//   li.dataset.businessId = business.id;
-//   li.className = "text-justify"
-
-//   li.innerHTML += `<br><strong>${business.name}</strong><br>Ph: ${business.phone}<br>IG: ${business.instagram}<br><a href="${business.website}" target="_blank">Go to website</a>`;
-
-//   ul.appendChild(li);
-// }
 
 function submitNewForm(name, phone, website, instagram, neighborhood_id) {
   let businessData = {name, phone, website, instagram, neighborhood_id};
@@ -157,10 +82,3 @@ function newFormHandler(e) {
 
   alert(`${name} has been added. Thank you!`);
 }
-
-
-
-
-
-
-// onLoad();

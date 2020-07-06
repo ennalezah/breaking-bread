@@ -7,7 +7,6 @@ class Business {
       this.instagram = business.instagram;
       this.neighborhood_id = business.neighborhood.id;
       Business.all.push(this);
-      // debugger
    }
 
    renderBusiness() { 
