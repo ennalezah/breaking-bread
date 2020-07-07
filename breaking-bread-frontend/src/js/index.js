@@ -16,30 +16,17 @@ function onLoad() {
 }
 
 function handleSortBtn(e) {
-  let items = document.querySelectorAll("li");
-  items.forEach(item => item.remove());
+  Business.sortBusinesses();
+  // let items = document.querySelectorAll("li");
+  // items.forEach(item => item.remove());
 
-  const businesses = Business.all;
-  const copyBusinesses = [...businesses]; 
+  // const businesses = Business.all;
+  // const copyBusinesses = [...businesses]; 
 
-  let sortedBusinesses = copyBusinesses.sort((a, b) => (a.name > b.name) ? 1 : -1)
-  // debugger
+  // const sortedBusinesses = copyBusinesses.sort((a, b) => (a.name > b.name) ? 1 : -1)
+  // // debugger
 
-  for (const business of sortedBusinesses) {    
-    business.addBusinessToNeighborhood();
-  }
-
-  // for (const neighborhood of neighborhoods) {
-  //   let neighborhoodBusinesses = copyBusinesses.filter(business => business.neighborhood_id === neighborhood.id);
-
-  //   let sortedBiz = neighborhoodBusinesses.sort((a, b) => (a.name > b.name) ? 1 : -1)
-  //   // debugger
-
-  //   sortedBiz.forEach(biz => {
-  //     let newBiz = new Business(biz);
-  //     newBiz.addBusinessToNeighborhood();
-  //   })    
-  // }
+  // sortedBusinesses.forEach(business => business.addBusinessToNeighborhood())
 }
 
 

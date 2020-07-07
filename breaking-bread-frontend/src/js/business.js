@@ -30,7 +30,21 @@ class Business {
    }
 
    static sortBusinesses() {
+      // let items = document.querySelectorAll("li");
+      // items.forEach(item => item.remove());
+    
+      const businesses = Business.all;
+      const copyBusinesses = [...businesses]; 
+    
+      const sortedBusinesses = copyBusinesses.sort((a, b) => (a.name > b.name) ? 1 : -1)
+      // debugger
 
+      let items = document.querySelectorAll("li");
+      items.forEach(item => item.remove());
+    
+      sortedBusinesses.forEach(business => business.addBusinessToNeighborhood())
+
+      console.log("Businesses are sorted!")
    }
 }
 
