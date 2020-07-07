@@ -28,6 +28,10 @@ class Business {
       const ul = document.querySelector(`[data-neighborhood-businesses="${this.neighborhood_id}"]`);
       ul.innerHTML += this.renderBusiness();
    }
+
+   static sortBusinesses() {
+
+   }
 }
 
 Business.all = [];

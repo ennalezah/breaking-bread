@@ -11,7 +11,39 @@ function onLoad() {
   fetchBusinesses();
 
   document.getElementById("new-business-form").addEventListener("submit", newFormHandler);
+
+  document.getElementById("sort").addEventListener("click", handleSortBtn);
 }
+
+function handleSortBtn(e) {
+  let items = document.querySelectorAll("li");
+  items.forEach(item => item.remove());
+
+  const businesses = Business.all;
+  const copyBusinesses = [...businesses]; 
+
+  let sortedBusinesses = copyBusinesses.sort((a, b) => (a.name > b.name) ? 1 : -1)
+  // debugger
+
+  for (const business of sortedBusinesses) {    
+    business.addBusinessToNeighborhood();
+  }
+
+  // for (const neighborhood of neighborhoods) {
+  //   let neighborhoodBusinesses = copyBusinesses.filter(business => business.neighborhood_id === neighborhood.id);
+
+  //   let sortedBiz = neighborhoodBusinesses.sort((a, b) => (a.name > b.name) ? 1 : -1)
+  //   // debugger
+
+  //   sortedBiz.forEach(biz => {
+  //     let newBiz = new Business(biz);
+  //     newBiz.addBusinessToNeighborhood();
+  //   })    
+  // }
+}
+
+
+
 
 /****** CITY ******/
 function fetchCities() {
